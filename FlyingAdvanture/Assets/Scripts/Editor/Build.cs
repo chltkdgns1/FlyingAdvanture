@@ -5,7 +5,7 @@ public class Build
 {
     public static bool IsCheckAppBundle;
 
-    private const string APP_NAME = "LoadBall";
+    private const string APP_NAME = "SkyPlay";
     const string KEYSTORE_PASSWORD = "gkftndlTek12!";
     const string BUILD_BASIC_PATH = "../../build/";
     const string BUILD_ANDROID_PATH = BUILD_BASIC_PATH + "Android";

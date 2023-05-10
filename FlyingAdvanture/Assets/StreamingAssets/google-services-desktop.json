@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1046766414461",
+    "firebase_url": "https://skyplay-9d629-default-rtdb.firebaseio.com",
+    "project_id": "skyplay-9d629",
+    "storage_bucket": "skyplay-9d629.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1046766414461:android:a50e93cf674baa25509f14",
+        "android_client_info": {
+          "package_name": "com.vicgamestudios.skyplay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1046766414461-af2av6d8v88od6ee46gmeujkfhfrbl9s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcKO873c3DMBnmUsIdCTsk1P5jpedGlE0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1046766414461-af2av6d8v88od6ee46gmeujkfhfrbl9s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

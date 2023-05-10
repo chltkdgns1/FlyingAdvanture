@@ -1,4 +1,4 @@
-//using GooglePlayGames;
+using GooglePlayGames;
 using System;
 using UnityEngine;
 
@@ -17,8 +17,8 @@ public class GoogleLogin
         //PlayGamesPlatform.InitializeInstance(config);
 
 
-        //PlayGamesPlatform.DebugLogEnabled = true;
-        //PlayGamesPlatform.Activate();
+        PlayGamesPlatform.DebugLogEnabled = true;
+        PlayGamesPlatform.Activate();
     }
 
     static public void OnStatic()

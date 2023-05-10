@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 660911240, guid: f624596d5fe1bd5459a5da424a8abc1b, type: 3}
   m_Name: TheBackendSettings
   m_EditorClassIdentifier: 
-  clientAppID: f5b58c90-86b2-11ed-ada0-d9c5852864844329
-  signatureKey: f5b58c91-86b2-11ed-ada0-d9c5852864844329
+  clientAppID: 9a45ffe0-ee70-11ed-8690-8ffac04d5db04880
+  signatureKey: 9a4626f0-ee70-11ed-8690-8ffac04d5db04880
   functionAuthKey: 
-  packageName: com.vicgamestudios.loadball
+  packageName: com.VicGameStudios.FlyingAdvanture
   isAllPlatform: 1
   sendLogReport: 1
   rateCountActive: 0
