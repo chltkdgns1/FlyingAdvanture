@@ -22,13 +22,15 @@ public class BackEndUser : SingleTon<BackEndUser>
     {
         if (IsProcessingLogin)
         {
-            Debug.Log("BackEnd Login Áß...");
+            Debug.Log("BackEnd Login ì¤‘...");
+            BackEndLogger.Log("LoginSeqeunce", BackEndLogger.LogType.NOMAL, "BackEnd Login ì¤‘...");
             return;
         }
 
         if (BackEndServer.Instance.IsCheckConnecting() == false)
         {
-            Debug.Log("ÃÊ±âÈ­ ½ÇÆĞ");
+            Debug.Log("ì´ˆê¸°í™” ì‹¤íŒ¨");
+            BackEndLogger.Log("LoginSeqeunce", BackEndLogger.LogType.NOMAL, "ì´ˆê¸°í™” ì‹¤íŒ¨");
             result?.Invoke(false);
             return;
         }
@@ -46,18 +48,18 @@ public class BackEndUser : SingleTon<BackEndUser>
 
     bool GuestLogin()
     {
-        Debug.Log("°Ô½ºÆ® ·Î±×ÀÎ ½ÃÀÛ");
+        Debug.Log("ê²ŒìŠ¤íŠ¸ ë¡œê·¸ì¸ ì‹œì‘");
 
         var bro = Backend.BMember.GuestLogin();
 
         if (bro.IsSuccess())
         {
-            Debug.Log("°Ô½ºÆ® ·Î±×ÀÎ¿¡ ¼º°øÇß½À´Ï´Ù. : " + bro);
+            Debug.Log("ê²ŒìŠ¤íŠ¸ ë¡œê·¸ì¸ì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤. : " + bro);
             return true;
         }
         else
         {
-            Debug.LogError("°Ô½ºÆ® ·Î±×ÀÎ¿¡ ½ÇÆĞÇß½À´Ï´Ù. : " + bro);
+            Debug.LogError("ê²ŒìŠ¤íŠ¸ ë¡œê·¸ì¸ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤. : " + bro);
             return false;
         }
     }

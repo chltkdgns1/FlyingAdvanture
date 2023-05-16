@@ -4,8 +4,8 @@ using UnityEngine;
 public enum SoundType
 {
     NONE,
-    BACKGROUND_SOUND,   // ¹è°æ À½¾Ç
-    INGAME_SOUND        // °ÔÀÓ¿¡¼­ ³ª´Â ¸ğµç ¼Ò¸®(¹è°æ À½¾Ç Á¦¿Ü)
+    BACKGROUND_SOUND,   // ë°°ê²½ ìŒì•…
+    INGAME_SOUND        // ê²Œì„ì—ì„œ ë‚˜ëŠ” ëª¨ë“  ì†Œë¦¬(ë°°ê²½ ìŒì•… ì œì™¸)
 }
 
 class SoundChannel
@@ -67,11 +67,6 @@ public class Sound : MonoSingleTon<Sound>
         soundBGMChannel.audioSource.loop = true;
         soundBGMChannel.audioSource.playOnAwake = false;
         soundBGMChannel.audioSource.volume = 1f;
-    }
-
-    public override void StartSingleTon()
-    {
-
     }
 
     public void PlayClip(string clip, SoundType type)

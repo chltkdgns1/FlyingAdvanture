@@ -76,6 +76,7 @@ public class DebugConsole : MonoBehaviour
         realAlphaBuildTxt.GetComponent<TextMeshProUGUI>().text = str + " VESION " + Application.version;
     }
 
+
     public void OnPrint()
     {
         debugConsoleOb?.SetActive(true);

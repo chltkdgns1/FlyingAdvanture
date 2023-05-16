@@ -4,9 +4,9 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
-public class PopupStack : MonoBehaviour, IPopupStackInfo
+public class PopupStack : MonoBehaviour
 {
-    #region ÆË¾÷ ±â´É
+    #region íŒì—… ê¸°ëŠ¥
     public GameObject AddObject;
     public GameObject RemoveObject;
 
@@ -28,7 +28,7 @@ public class PopupStack : MonoBehaviour, IPopupStackInfo
     public Action removePopupAct;
     #endregion
 
-    #region ÆË¾÷ ½ºÅÃ static
+    #region íŒì—… ìŠ¤íƒ static
     static Dictionary<GameObject, bool> _dic = new Dictionary<GameObject, bool>();
     static Dictionary<string, int> _dicStr = new Dictionary<string, int>();
     static Stack<GameObject> popupStack = new Stack<GameObject>();
@@ -125,7 +125,7 @@ public class PopupStack : MonoBehaviour, IPopupStackInfo
 #endif
     }
 
-    #region ÆË¾÷ ½ºÅÃ static
+    #region íŒì—… ìŠ¤íƒ static
     static public T PopupShow<T>(string popupPath)
     {
         if (canvasObject == null)
@@ -148,17 +148,17 @@ public class PopupStack : MonoBehaviour, IPopupStackInfo
 
     static void AddPopup(GameObject ob)
     {
-        Debug.LogWarning("¿¡µå ³×ÀÓ : " + ob.name);
+        Debug.LogWarning("ì—ë“œ ë„¤ì„ : " + ob.name);
         ob.transform.SetAsLastSibling();
         popupStack.Push(ob);
         AddDicData(ob);
     }
-    // ÄÚµå¿¡ ÀÌº¥Æ®¿¡ ÀÇÇØ¼­ ÀÛµ¿ÇÏ´Â °æ¿ì
+    // ì½”ë“œì— ì´ë²¤íŠ¸ì— ì˜í•´ì„œ ì‘ë™í•˜ëŠ” ê²½ìš°
     static void RemovePopup(GameObject ob)
     {
         Remove(ob);
     }
-    // µÚ·Î °¡±â¿¡ ÀÇÇØ¼­ ÀÛµ¿ÇÏ´Â °æ¿ì
+    // ë’¤ë¡œ ê°€ê¸°ì— ì˜í•´ì„œ ì‘ë™í•˜ëŠ” ê²½ìš°
     static public bool RemoveBack()
     {
         if (popupStack.Count == 0) return false;

@@ -11,5 +11,14 @@ public class Popup<T> where T : NoticePopup
         noticePopup.gameObject.SetActive(true);
         return noticePopup;
     }
+
+    static public T ShowPopup(string popupPath, string message)
+    {
+        var noticePopup = PopupStack.PopupShow<T>(popupPath);
+        noticePopup.ResetOkAct();
+        noticePopup.ResetCancleAct();
+        noticePopup.gameObject.SetActive(true);
+        return noticePopup;
+    }
 }
 

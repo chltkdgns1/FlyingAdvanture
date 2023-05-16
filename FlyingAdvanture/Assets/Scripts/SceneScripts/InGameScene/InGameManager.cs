@@ -189,7 +189,7 @@ public partial class InGameManager : MonoBehaviour
 #if UNITY_EDITOR
     public void TestBackButton()
     {
-        AppInput.instance.SetBack();
+        BackKeyManager.Instance.SetBack();
     }
 #endif
 

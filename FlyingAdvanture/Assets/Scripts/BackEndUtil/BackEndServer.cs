@@ -13,20 +13,20 @@ public class BackEndServer : MonoSingleTon<BackEndServer>
 
     public bool Reconnect()
     {
-        Debug.Log("µÚ³¡ ÃÊ±âÈ­ Áß...");
+        Debug.Log("ë’¤ë ì´ˆê¸°í™” ì¤‘...");
         backendReturnObject = Backend.Initialize(true);
 
         if (backendReturnObject.IsSuccess())
         {
-            //¼º°øÀÏ °æ¿ì statusCode 204 Success
-            Debug.Log("ÃÊ±âÈ­ ¼º°ø : " + backendReturnObject);
+            //ì„±ê³µì¼ ê²½ìš° statusCode 204 Success
+            Debug.Log("ì´ˆê¸°í™” ì„±ê³µ : " + backendReturnObject);
             return true;
         }
         else
         {
             backendReturnObject = null;
-            // ½ÇÆĞÀÏ °æ¿ì statusCode 400´ë ¿¡·¯ ¹ß»ı 
-            Debug.Log("ÃÊ±âÈ­ ½ÇÆĞ : " + backendReturnObject);
+            // ì‹¤íŒ¨ì¼ ê²½ìš° statusCode 400ëŒ€ ì—ëŸ¬ ë°œìƒ 
+            Debug.Log("ì´ˆê¸°í™” ì‹¤íŒ¨ : " + backendReturnObject);
             return false;
         }
     }
@@ -54,11 +54,11 @@ public class BackEndServer : MonoSingleTon<BackEndServer>
 
     void Update()
     {
-        // µÚ³¡ ºñµ¿±â ÇÔ¼ö »ç¿ë ½Ã, ¸ŞÀÎ¾²·¹µå¿¡¼­ Äİ¹éÀ» Ã³¸®ÇØÁÖ´Â Dispatch
+        // ë’¤ë ë¹„ë™ê¸° í•¨ìˆ˜ ì‚¬ìš© ì‹œ, ë©”ì¸ì“°ë ˆë“œì—ì„œ ì½œë°±ì„ ì²˜ë¦¬í•´ì£¼ëŠ” Dispatch
         Backend.AsyncPoll();
     }
 
-    public override void StartSingleTon()
+    public void StartSingleTon()
     {
         if (IsConnect() == false)
         {

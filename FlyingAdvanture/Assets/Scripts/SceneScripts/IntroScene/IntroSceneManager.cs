@@ -146,16 +146,15 @@ public class IntroSceneManager : MonoBehaviour
             
             GoogleLogin.OnLogin(() =>
             {
-                Debug.Log("∑Œ±◊¿Œ º∫∞¯ µ⁄≥° ∑Œ±◊¿Œ Ω√¿€");
-
+                BackEndLogger.Log("LoginSeqeunce", BackEndLogger.LogType.NOMAL, "Î°úÍ∑∏Ïù∏ ÏÑ±Í≥µ Îí§ÎÅù Î°úÍ∑∏Ïù∏ ÏãúÏûë");
                 BackEndUser.Instance.LoginBackEnd((result) =>
                 {
                     if (result == true)
                     {
-                        Debug.Log("∑Œ±◊¿Œ º∫∞¯");
+                        Debug.Log("Î°úÍ∑∏Ïù∏ ÏÑ±Í≥µ");
                         ThreadEvent.AddThreadEvent(() =>
                         {
-                            BackEndLogger.Log("IntroSceneManager", BackEndLogger.LogType.NOMAL, "∑Œ∫Òæ¿¿∏∑Œ ¿Ãµø");
+                            BackEndLogger.Log("IntroSceneManager", BackEndLogger.LogType.NOMAL, "Î°úÎπÑÏî¨ÏúºÎ°ú Ïù¥Îèô");
 
                             GlobalData.IsGoogleLogin = true;
                             Debug.Log("Start Login Call Back");
@@ -166,7 +165,7 @@ public class IntroSceneManager : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("µ⁄≥° Ω«∆–");
+                        Debug.Log("Îí§ÎÅù Ïã§Ìå®");
                         GlobalData.IsGoogleLogin = false;
                         GlobalData.Uid = null;
                         ShowQuitPopup(StringList.OffLineNotice);
@@ -201,7 +200,7 @@ public class IntroSceneManager : MonoBehaviour
             var popup = Popup<NoticePopup>.ShowPopup(PopupPath.PopupNotice, StringList.LanguageTable, message);
             popup.SetOkAct(UtilManager.Quit);
             popup.SetCancleAct(UtilManager.Quit);
-            WaitManager.instance.StartWait(4f, () =>
+            WaitManager.instance.StartWait(20f, () =>
             {
                 UtilManager.Quit();
             });

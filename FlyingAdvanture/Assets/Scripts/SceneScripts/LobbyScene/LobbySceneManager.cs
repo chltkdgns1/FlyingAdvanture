@@ -55,7 +55,7 @@ public partial class LobbySceneManager : MonoBehaviour
 #if UNITY_EDITOR
     public void TestBack()
     {
-        AppInput.instance.SetBack();
+        BackKeyManager.Instance.SetBack();
     }
 
     public void TestNet()

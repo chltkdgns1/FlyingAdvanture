@@ -58,6 +58,4 @@ public abstract class MonoSingleTon<T> : MonoBehaviour where T : MonoSingleTon<T
         isDestory = true;
         instance = null;
     }
-
-    abstract public void StartSingleTon();
 }

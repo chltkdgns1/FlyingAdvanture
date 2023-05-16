@@ -32,6 +32,8 @@ public class GoogleLogin
         {
             Social.localUser.Authenticate((bool bSuccess) =>
             {
+                Debug.Log("성공? : " + bSuccess);
+
                 if (bSuccess == false)
                 {
 #if UNITY_EDITOR
@@ -179,6 +181,6 @@ public class GoogleLogin
 
     public static void OnLogout()
     {
-        //PlayGamesPlatform.Instance.SignOut();
+        PlayGamesPlatform.Instance.SignOut();
     }
 }

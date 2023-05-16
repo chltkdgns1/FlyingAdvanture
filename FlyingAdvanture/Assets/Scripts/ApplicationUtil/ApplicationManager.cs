@@ -124,12 +124,6 @@ public class ApplicationManager : MonoBehaviour
         });
     }
 
-
-    private void Start()
-    {
-
-    }
-
     VersionCheck CheckVersion(List<string> appVersion, List<string> releaseVision)
     {
         if(appVersion.Count != releaseVision.Count)
