@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StorePopup : PopupStack
+public class StorePopup : PopupComponent
 {
     public Vector3 startScale = new Vector3(0.8f, 0.8f);
     public float endScale = 1f;
@@ -147,15 +147,13 @@ public class StorePopup : PopupStack
         return Instantiate(prefabs, trans);
     }
 
-    protected override void Awake()
+    protected void Awake()
     {
-        base.Awake();
         Init();
     }
 
-    protected override void OnEnable()
+    protected void OnEnable()
     {
-        base.OnEnable();
         CacheIndex = 0;
         tabManager.Clear();
         tabManager.OnMenu(CacheIndex);
@@ -163,7 +161,7 @@ public class StorePopup : PopupStack
         UIEffectManager.PrintBouncePopup(gameObject, startScale, duration, endScale, endAlpha, delay);
     }
 
-    protected override void Start()
+    protected void Start()
     {
         ResetAll();
     }
@@ -184,7 +182,7 @@ public class StorePopup : PopupStack
         moneyFrame.SetSize(GlobalData.Coin.ToString());
     }
 
-    void Reset() // ∏Æº¬¿Ã∂ı ¿ŒΩ∫∆Â≈Õ¿« µ•¿Ã≈Õ∏¶ ≈¨∏ÆæÓ«ÿ¡÷¥¬ ∏ﬁº≠µÂ
+    void Reset() // Î¶¨ÏÖãÏù¥ÎûÄ Ïù∏Ïä§ÌéôÌÑ∞Ïùò Îç∞Ïù¥ÌÑ∞Î•º ÌÅ¥Î¶¨Ïñ¥Ìï¥Ï£ºÎäî Î©îÏÑúÎìú
     {
 
     }
@@ -227,26 +225,25 @@ public class StorePopup : PopupStack
 
     public void SetNoticeActive()
     {
-        var noticePopup = PopupStack.PopupShow<NoticePopup>(PopupPath.PopupNotice);
+        var noticePopup = PopupComponent.PopupShow<NoticePopup>(PopupPath.PopupNotice);
         noticePopup.gameObject.SetActive(true);
     }
 
     public void SetPurchaseOk(Action act)
     {
-        var noticePopup = PopupStack.PopupShow<NoticePopup>(PopupPath.PopupNotice);
+        var noticePopup = PopupComponent.PopupShow<NoticePopup>(PopupPath.PopupNotice);
         noticePopup.SetOkAct(act);
     }
 
     public void ResetPopupNoticeOkAct()
     {
-        var noticePopup = PopupStack.PopupShow<NoticePopup>(PopupPath.PopupNotice);
+        var noticePopup = PopupComponent.PopupShow<NoticePopup>(PopupPath.PopupNotice);
         noticePopup.ResetOkAct();
     }
 
     public void SetNoticeLocalizationString(string localization, string tableStr)
     {
-        var noticePopup = PopupStack.PopupShow<NoticePopup>(PopupPath.PopupNotice);
-        noticePopup.SetLocalizationString(localization, tableStr);
+        var noticePopup = PopupComponent.PopupShow<NoticePopup>(PopupPath.PopupNotice);
     }
 
     public void RefreshMenuProducts()

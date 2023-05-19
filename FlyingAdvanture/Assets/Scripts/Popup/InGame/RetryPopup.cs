@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RetryPopup : PopupStack
+public class RetryPopup : PopupComponent
 {
     public void LeaveGame()
     {
-        InGameManager.instance?.LeaveGame();
+       // InGameManager.instance?.LeaveGame();
     }
 
     public void RestartGame()
     {
-        InGameManager.instance?.ReStartGame();
+       // InGameManager.instance?.ReStartGame();
     }
 }

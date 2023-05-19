@@ -16,6 +16,22 @@ public class PopupComponent : BackKeyHandler
     #region 팝업 스택 static
     static public T PopupShow<T>(string popupPath) where T : PopupComponent
     {
+        return SetPopup<T>(popupPath);
+    }
+
+    static public T PopupShow<T>(string popupPath, string title, string content) where T : PopupComponent
+    {
+        SetPopupString(title, content);
+        return SetPopup<T>(popupPath);
+    }
+
+    static void SetPopupString(string title, string content)
+    {
+
+    }
+
+    static T SetPopup<T>(string popupPath) where T : PopupComponent
+    {
         if (canvasObject == null)
         {
             canvasObject = GameObject.Find("Canvas");

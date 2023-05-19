@@ -3,6 +3,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+public enum Direction
+{
+    RIGHT,
+    TOP,
+    LEFT,
+    BOTTOM
+}
+
 public class JoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField]

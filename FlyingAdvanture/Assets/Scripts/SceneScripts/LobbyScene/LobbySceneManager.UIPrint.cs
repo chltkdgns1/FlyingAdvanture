@@ -130,11 +130,11 @@ public partial class LobbySceneManager
     {
         if (GlobalData.IsOpenRankingChallenge)
         {
-            Popup<NoticePopup>.ShowPopup(PopupPath.PopupRanking, StringList.LanguageTable, StringList.MatchingPopupReadyEnd);
+            PopupComponent.PopupShow<NoticePopup>(PopupPath.PopupRanking);
         }
         else
         {
-            Popup<NoticePopup>.ShowPopup(PopupPath.PopupNotice, StringList.LanguageTable, StringList.MatchingPopupReady);
+            PopupComponent.PopupShow<NoticePopup>(PopupPath.PopupNotice);
         }
     }
 }

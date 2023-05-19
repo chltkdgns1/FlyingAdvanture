@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CompletePopup : PopupStack
+public class CompletePopup : PopupComponent
 {
     [SerializeField]
     Button nextBtn;
@@ -20,14 +20,15 @@ public class CompletePopup : PopupStack
 
     public bool IsUseNextBtn;
 
-    protected override void OnEnable()
+    protected void Awake()
     {
-        base.OnEnable();
-        if (IsUseNextBtn) nextBtn.interactable = true;
-        else nextBtn.interactable = false;
+        if (IsUseNextBtn) 
+            nextBtn.interactable = true;
+        else 
+            nextBtn.interactable = false;
     }
 
-    public void SetCompleteState(float remainTime, int coin, int startCnt)
+    public void SetData(float remainTime, int coin, int startCnt)
     {
         Debug.Log("public void SetCompleteState(float remainTime, int coin, int startCnt)");
         ResetState();
@@ -112,16 +113,16 @@ public class CompletePopup : PopupStack
 
     public void LeaveGame()
     {
-        InGameManager.instance?.LeaveGame();
+        //InGameManager.instance?.LeaveGame();
     }
 
     public void RestartGame()
     {
-        InGameManager.instance?.ReStartGame();
+        //InGameManager.instance?.ReStartGame();
     }
 
     public void NextStage()
     {
-        InGameManager.instance?.NextStage();
+        //InGameManager.instance?.NextStage();
     }
 }

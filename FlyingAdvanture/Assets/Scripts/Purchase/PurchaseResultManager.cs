@@ -32,11 +32,11 @@ public class PurchaseResultManager
     static async void SetDeleteAdsGoldResult(int purchaseCnt, long price)
     {
         int per = Random.Range(0, 100);
-        Debug.Log("±¤°í Á¦°Å È®·ü : " + per);
+        Debug.Log("ê´‘ê³  ì œê±° í™•ë¥  : " + per);
 
         if (per >= 99)
         {
-            // ¼º°ø
+            // ì„±ê³µ
             await GoogleFirebaseManager.WriteDeleteAds(GlobalData.Uid);
             GlobalData.IsDeleteAds = true;
 
@@ -44,7 +44,7 @@ public class PurchaseResultManager
             {
                 PurchaseAnimManager.instance.StartAnimation(ProductTypes.NonGoolgeProduct_DeleteAds).OnComplete((ob) =>
                 {
-                    Popup<NoticePopup>.ShowPopup(PopupPath.PopupNotice, StringList.LanguageTable, StringList.PurchaseDeleteAdsGoldSuccess);
+                    PopupComponent.PopupShow<NoticePopup>(PopupPath.PopupNotice);
                 }, null);
             }, null);
         }
@@ -54,7 +54,7 @@ public class PurchaseResultManager
             {
                 PurchaseAnimManager.instance.StartAnimation(ProductTypes.NonGoolgeProduct_DeleteAds).OnComplete((ob) =>
                 {
-                    Popup<NoticePopup>.ShowPopup(PopupPath.PopupNotice, StringList.LanguageTable, StringList.PurchaseDeleteAdsGoldFailed);
+                    PopupComponent.PopupShow<NoticePopup>(PopupPath.PopupNotice);
                 }, null);
             }, null);
         }
@@ -97,7 +97,7 @@ public class PurchaseResultManager
     {
         PurchaseAnimManager.instance.StartAnimation(type).OnComplete((ob) =>
         {
-            Popup<NoticePopup>.ShowPopup(PopupPath.PopupNotice, StringList.LanguageTable, StringList.PurchaseSuccess);
+            PopupComponent.PopupShow<NoticePopup>(PopupPath.PopupNotice);
         }, null);
     }
 }

@@ -85,7 +85,7 @@ public class ApplicationManager : MonoBehaviour
                                 Debug.LogWarning("openURL : " + strUrl);
                                 ThreadEvent.AddThreadEventParam((url) =>
                                 {
-                                    var popup = Popup<NoticePopup>.ShowPopup(PopupPath.PopupNotice, StringList.LanguageTable, StringList.NoticeAppUpdate);
+                                    var popup = PopupComponent.PopupShow<NoticePopup>(PopupPath.PopupNotice);
                                     popup.SetOkAct(() =>
                                     {
                                         Application.OpenURL(strUrl);
@@ -93,11 +93,6 @@ public class ApplicationManager : MonoBehaviour
                                     });
 
                                     popup.SetCancleAct(() =>
-                                    {
-                                        UtilManager.Quit();
-                                    });
-
-                                    popup.PushRemovePopupAct(() =>
                                     {
                                         UtilManager.Quit();
                                     });

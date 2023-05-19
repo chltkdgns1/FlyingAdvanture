@@ -29,6 +29,6 @@ public class JoyStickManager : MonoBehaviour
 
     void OnClickJoyStick(Direction dir)
     {
-        InGameManager.instance.MovePlayer(dir);
+        //InGameManager.instance.MovePlayer(dir);
     }
 }

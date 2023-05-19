@@ -1,4 +1,4 @@
-public class RankingMatchPopup : PopupStack
+public class RankingMatchPopup : PopupComponent
 {
 
 }

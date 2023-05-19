@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlidePopup : PopupStack
+public class SlidePopup : PopupComponent
 {
     public Direct outdir;
     public float duration;
@@ -27,25 +27,25 @@ public class SlidePopup : PopupStack
     int frontIndex = -1;
     Queue<PopupEventData> _eventQue = new Queue<PopupEventData>();
 
-    protected override void Awake()
+    protected void Awake()
     {
-        base.Awake();
+
     }
 
-    protected override void Start()
+    protected void Start()
     {
         _sizeDelta = new Vector3(Screen.width, Screen.height);
         Debug.Log(_sizeDelta);
         InitPos();
     }
 
-    protected override void OnEnable()
+    protected void OnEnable()
     {
         frontIndex = -1;
         _eventQue.Clear();
     }
 
-    protected override void OnDisable()
+    protected  void OnDisable()
     {
 
     }
@@ -96,7 +96,7 @@ public class SlidePopup : PopupStack
 
     public void MoveOut(Action act = null)
     {
-        RemovePopup();
+        //RemovePopup();
         UIEffectManager.MoveObject(gameObject, outdir, _sizeDelta, duration).OnComplete(() =>
         {
             IsMove = false;
@@ -106,7 +106,7 @@ public class SlidePopup : PopupStack
 
     public void MoveIn(Action act = null)
     {
-        AddPopup();
+        //AddPopup();
         UIEffectManager.MoveObject(gameObject, (Direct)(((int)outdir + 2) % 4), _sizeDelta, duration).OnComplete(() =>
         {
             IsMove = false;

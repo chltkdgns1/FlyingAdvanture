@@ -98,7 +98,7 @@ public class GoogleIAPCallBackManager
 
         if (result == false)
         {
-            Popup<NoticePopup>.ShowPopup(PopupPath.PopupNotice, StringList.LanguageTable, StringList.PurchaseFailed);
+            PopupComponent.PopupShow<NoticePopup>(PopupPath.PopupNotice);
         }
     }
 

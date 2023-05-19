@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class SettingPopup : PopupStack
+public class SettingPopup : PopupComponent
 {
     [SerializeField]
-    UIButton logoutBtn;
+    UIButtonEx logoutBtn;
 
     [SerializeField]
     Toggle inGameSoundToggle;
@@ -11,11 +11,8 @@ public class SettingPopup : PopupStack
     [SerializeField]
     Toggle BackGroundSoundToggle;
 
-    protected override void Awake()
+    protected void Awake()
     {
-        base.Awake();
-
-
         if (!logoutBtn || !inGameSoundToggle || !BackGroundSoundToggle)
         {
             BackEndLogger.Log("Error", BackEndLogger.LogType.NOMAL, "SettingPopup !logoutBtn || !inGameSoundToggle || !BackGroundSoundToggle");
@@ -43,7 +40,7 @@ public class SettingPopup : PopupStack
     {
         if (GlobalData.IsGoogleLogin == false)
         {
-            ToastMessageManager.instance.StartToastMessage("°Ô½ºÆ® ·Î±×ÀÎ °èÁ¤Àº ·Î±×¾Æ¿ô ÇÒ ¼ö ¾ø½À´Ï´Ù.", 2f);
+            ToastMessageManager.instance.StartToastMessage("ê²ŒìŠ¤íŠ¸ ë¡œê·¸ì¸ ê³„ì •ì€ ë¡œê·¸ì•„ì›ƒ í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.", 2f);
             return;
         }
 

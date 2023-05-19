@@ -4,13 +4,13 @@ public class NetWorkManager : MonoBehaviour
 {
     public static NetWorkManager instance;
 
-    [SerializeField]
-    GameObject loadingPrefabs;
+    //[SerializeField]
+    //GameObject loadingPrefabs;
 
     float disconnectTime;
     float disconnectLimitTime = 3f;
 
-    GameObject loadingReal;
+    //GameObject loadingReal;
 
     bool disconnectMessage;
 
@@ -55,7 +55,7 @@ public class NetWorkManager : MonoBehaviour
 
         IsDiconnect = true;
         GlobalData.IsGoogleLogin = false;
-        Popup<NoticePopup>.ShowPopup(PopupPath.PopupNotice, StringList.LanguageTable, StringList.OffLineNotice);
+        PopupComponent.PopupShow<NoticePopup>(PopupPath.PopupNotice);
         Invoke("Quit", 3f);
     }
 
@@ -64,17 +64,9 @@ public class NetWorkManager : MonoBehaviour
         UtilManager.Quit();
     }
 
-    void ErasePopupForbiddenNetwork()
-    {
-        for (int i = 0; i < forbiddenList.Length; i++)
-        {
-            PopupStack.Remove(forbiddenList[i]);
-        }
-    }
-
     void ResetState()
     {
-        EraseLoadBak();
+        //EraseLoadBak();
         disconnectMessage = false;
         disconnectTime = 0f;
     }
@@ -84,32 +76,32 @@ public class NetWorkManager : MonoBehaviour
     {
         if (disconnectMessage == false)
         {
-            CreateLoadBack();
+            //CreateLoadBack();
             disconnectMessage = true;
 
-            Popup<NoticePopup>.ShowPopup(PopupPath.PopupNotice, StringList.LanguageTable, StringList.NetworkUnstable);
-            //ToastMessageManager.instance.StartToastMessage("¿Œ≈Õ≥› ø¨∞·¿Ã ∫“æ»¡§«’¥œ¥Ÿ.", disconnectLimitTime);
+            PopupComponent.PopupShow<NoticePopup>(PopupPath.PopupNotice);
+            //ToastMessageManager.instance.StartToastMessage("Ïù∏ÌÑ∞ÎÑ∑ Ïó∞Í≤∞Ïù¥ Î∂àÏïàÏ†ïÌï©ÎãàÎã§.", disconnectLimitTime);
         }
     }
 
-    void CreateLoadBack()
-    {
-        if (loadingReal != null)
-        {
-            loadingReal.SetActive(true);
-            return;
-        }
+    //void CreateLoadBack()
+    //{
+    //    if (loadingReal != null)
+    //    {
+    //        loadingReal.SetActive(true);
+    //        return;
+    //    }
 
-        GameObject canvasObject = GameObject.Find("Canvas");
-        if (canvasObject == null) return;
+    //    GameObject canvasObject = GameObject.Find("Canvas");
+    //    if (canvasObject == null) return;
 
-        loadingReal = Instantiate(loadingPrefabs, canvasObject.transform);
-        loadingReal.SetActive(true);
-    }
+    //    loadingReal = Instantiate(loadingPrefabs, canvasObject.transform);
+    //    loadingReal.SetActive(true);
+    //}
 
-    void EraseLoadBak()
-    {
-        loadingReal?.SetActive(false);
-    }
+    //void EraseLoadBak()
+    //{
+    //    loadingReal?.SetActive(false);
+    //}
 }
 

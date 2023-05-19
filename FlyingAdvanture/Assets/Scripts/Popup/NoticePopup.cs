@@ -1,13 +1,11 @@
 using System;
 using UnityEngine;
-//using UnityEngine.Localization.Components;
 using UnityEngine.UI;
 
-public class NoticePopup : PopupStack
+public class NoticePopup : PopupComponent
 {
-    protected UIButton popupNoticeOkBtn;
-    protected UIButton popupNoticeCancleBtn;
-    //protected LocalizeStringEvent localizeStringEvent;
+    public UIButtonEx popupNoticeOkBtn;
+    public UIButtonEx popupNoticeCancleBtn;
 
     public bool IsExit
     {
@@ -28,73 +26,44 @@ public class NoticePopup : PopupStack
         }
     }
 
-    protected override void Awake()
-    {
-        base.Awake();
-        popupNoticeOkBtn = gameObject?.transform?.GetChild(0)?.GetChild(2)?.GetComponent<UIButton>();
-        popupNoticeCancleBtn = gameObject?.transform?.GetChild(0)?.GetChild(1)?.GetComponent<UIButton>();
-        //localizeStringEvent = gameObject?.transform?.GetChild(0)?.GetChild(0)?.GetComponent<LocalizeStringEvent>();
-
-        //if (!popupNoticeOkBtn || !popupNoticeCancleBtn || !localizeStringEvent)
-        //{
-        //    BackEndLogger.Log("Error", BackEndLogger.LogType.NOMAL, "NoticePopup !popupNoticeOkBtn || !popupNoticeCancleBtn || !localizeStringEvent");
-        //    return;
-        //}
-    }
-
     public void ResetOkAct()
     {
         if(popupNoticeOkBtn == null)
         {
-            popupNoticeOkBtn = gameObject?.transform?.GetChild(0)?.GetChild(2)?.GetComponent<UIButton>();
+            popupNoticeOkBtn = gameObject?.transform?.GetChild(0)?.GetChild(2)?.GetComponent<UIButtonEx>();
         }
 
-        popupNoticeOkBtn.act = null;
+        popupNoticeOkBtn.action = null;
     }
 
     public void SetOkAct(Action act)
     {
         if (popupNoticeOkBtn == null)
         {
-            popupNoticeOkBtn = gameObject?.transform?.GetChild(0)?.GetChild(2)?.GetComponent<UIButton>();
+            popupNoticeOkBtn = gameObject?.transform?.GetChild(0)?.GetChild(2)?.GetComponent<UIButtonEx>();
         }
 
-        popupNoticeOkBtn.act = act;
+        popupNoticeOkBtn.action = act;
     }
 
     public void ResetCancleAct()
     {
         if (popupNoticeCancleBtn == null)
         {
-            popupNoticeCancleBtn = gameObject?.transform?.GetChild(0)?.GetChild(1)?.GetComponent<UIButton>();
+            popupNoticeCancleBtn = gameObject?.transform?.GetChild(0)?.GetChild(1)?.GetComponent<UIButtonEx>();
         }
 
-        popupNoticeCancleBtn.act = null;
+        popupNoticeCancleBtn.action = null;
     }
 
     public void SetCancleAct(Action act)
     {
         if (popupNoticeCancleBtn == null)
         {
-            popupNoticeCancleBtn = gameObject?.transform?.GetChild(0)?.GetChild(1)?.GetComponent<UIButton>();
+            popupNoticeCancleBtn = gameObject?.transform?.GetChild(0)?.GetChild(1)?.GetComponent<UIButtonEx>();
         }
 
-        popupNoticeCancleBtn.act = act;
-    }
-
-    public void SetLocalizationString(string localization, string tableStr)
-    {
-        //if (localizeStringEvent == null)
-        //{
-        //    localizeStringEvent = transform.GetChild(0).GetChild(0).GetComponent<LocalizeStringEvent>();
-        //}
-
-        //if (popupNoticeOkBtn == null)
-        //{
-        //    popupNoticeOkBtn = transform.GetChild(0).GetChild(2).GetComponent<UIButton>();
-        //}
-
-        //localizeStringEvent.StringReference.SetReference(localization, tableStr);
+        popupNoticeCancleBtn.action = act;
     }
 
     public virtual void OnErase()

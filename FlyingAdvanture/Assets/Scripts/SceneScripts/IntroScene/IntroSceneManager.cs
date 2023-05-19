@@ -197,7 +197,7 @@ public class IntroSceneManager : MonoBehaviour
         
         ThreadEvent.AddThreadEvent(() =>
         {
-            var popup = Popup<NoticePopup>.ShowPopup(PopupPath.PopupNotice, StringList.LanguageTable, message);
+            var popup = PopupComponent.PopupShow<NoticePopup>(PopupPath.PopupNotice);
             popup.SetOkAct(UtilManager.Quit);
             popup.SetCancleAct(UtilManager.Quit);
             WaitManager.instance.StartWait(20f, () =>

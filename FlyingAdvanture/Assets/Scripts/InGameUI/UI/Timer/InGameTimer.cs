@@ -33,7 +33,7 @@ public class InGameTimer : MonoBehaviour
         timerKey = Timer.StartTimer(time * 1000f);
         StartCoroutine(StartTimer(time * 1000f, () =>
         {
-            InGameManager.instance.GameOver();
+            //InGameManager.instance.GameOver();
         }));
     }
 
@@ -112,7 +112,7 @@ public class InGameTimer : MonoBehaviour
     {
         if (_reminaTime <= 0)
         {
-            InGameManager.instance.GameOver();
+            //InGameManager.instance.GameOver();
             ResetTimer();
             return;
         }
