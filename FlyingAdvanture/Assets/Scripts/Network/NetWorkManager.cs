@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NetWorkManager : MonoBehaviour
+public class NetWorkManager : MonoSingleTon<NetWorkManager>
 {
     public static NetWorkManager instance;
 
@@ -18,11 +18,8 @@ public class NetWorkManager : MonoBehaviour
 
     bool IsDiconnect = false;
 
-    private void Awake()
+    protected override void Init()
     {
-        if (instance == null) instance = this;
-        else enabled = false;
-
         ResetState();
     }
 

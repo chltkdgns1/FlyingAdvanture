@@ -2,17 +2,25 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TouchScreen : MonoBehaviour
+public class TouchScreen : MonoSingleTon<TouchScreen>
 {
-    static public List<Action<Vector3>> touchAct = new List<Action<Vector3>>();
-    static public List<Action<Vector3>> ClickAct = new List<Action<Vector3>>();
-
-    public void Awake()
+    public class MultiTouchData
     {
-
+        public List<Touch> touchList = new List<Touch>();
     }
 
-    static public void AddEvent(int index, Action<Vector3> act)
+    public List<Action<Vector3>> touchAct = new List<Action<Vector3>>();
+    public List<Action<MultiTouchData>> multiTouchAct = new List<Action<MultiTouchData>>();
+    public List<Action<Vector3>> ClickAct = new List<Action<Vector3>>();
+
+    public Vector3 centerPos;
+
+    protected override void Init()
+    {
+        centerPos = new Vector3(Screen.width / 2f, Screen.height / 2f);
+    }
+
+    public void AddEvent(int index, Action<Vector3> act)
     {
         if (touchAct.Count <= index || ClickAct.Count <= index)
             return;
@@ -21,17 +29,28 @@ public class TouchScreen : MonoBehaviour
         ClickAct[index] += act;
     }
 
-    static public int AddEvent(Action<Vector3> act)
+    public int AddEvent(Action<Vector3> act)
     {
         touchAct.Add(act);
         ClickAct.Add(act);
         return touchAct.Count - 1;
     }
 
-    static public void DeleteEvent(int index, Action<Vector3> act)
+    public int AddMultiTouchEvent(Action<MultiTouchData> act)
+    {
+        multiTouchAct.Add(act);
+        return multiTouchAct.Count - 1;
+    }
+
+    public void DeleteEvent(int index, Action<Vector3> act)
     {
         touchAct[index] -= act;
         ClickAct[index] -= act;
+    }
+
+    public void DeleteMultiTouchEvent(int index, Action<MultiTouchData> act)
+    {
+        multiTouchAct[index] -= act;
     }
 
     private void Update()
@@ -39,6 +58,7 @@ public class TouchScreen : MonoBehaviour
         if (Input.touchCount > 0)
         {
             OnTouchEvent();
+            OnMultiTouchEvent();
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -59,6 +79,23 @@ public class TouchScreen : MonoBehaviour
             {
                 touchAct[i]?.Invoke(pos);
             }
+        }
+    }
+
+    void OnMultiTouchEvent()
+    {
+        var touches = Input.touches;
+
+        MultiTouchData mulTouch = new MultiTouchData();
+        for (int i = 0; i < touches.Length; i++)
+        {
+            mulTouch.touchList.Add(touches[i]);
+        }
+
+        int cnt = multiTouchAct.Count;
+        for (int i = 0; i < cnt; i++)
+        {
+            multiTouchAct[i]?.Invoke(mulTouch);
         }
     }
 

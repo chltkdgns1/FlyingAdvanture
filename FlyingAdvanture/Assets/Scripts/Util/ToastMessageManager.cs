@@ -27,8 +27,6 @@ public class ToastMessageManager : MonoBehaviour
     private Queue<Element> messageQueue = new Queue<Element>();
     private bool _toastState;
 
-    const int _depth = 10000;
-
     private void Awake()
     {
         if (instance == null) instance = this;

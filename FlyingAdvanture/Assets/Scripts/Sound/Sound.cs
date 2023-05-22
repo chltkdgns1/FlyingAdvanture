@@ -109,6 +109,18 @@ public class Sound : MonoSingleTon<Sound>
         soundChannels[index].Play();
     }
 
+    void StopSound(string clip)
+    {
+        int len = soundChannels.Length;
+        for (int i = 0; i < len; i++)
+        {
+            if(soundChannels[i].audioSource.name == clip)
+            {
+                soundChannels[i].Stop();
+            }
+        }
+    }
+
     public void StopBGM()
     {
         soundBGMChannel.Stop();

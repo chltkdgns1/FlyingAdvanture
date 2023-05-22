@@ -1,32 +1,21 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(WaitManager))]
-public class WaitLoadingManager : MonoBehaviour
+public class WaitLoadingManager : MonoSingleTon<WaitLoadingManager>
 {
-    public static WaitLoadingManager instance;
-
     [SerializeField]
     GameObject loadingBack;
 
     GameObject loadingBackReal;
 
-    private void Awake()
-    {
-        if (instance == null) instance = this;
-        else enabled = false;
-
-        BackEndLogger.Log("WaitLoadingManager", BackEndLogger.LogType.NOMAL, "Awake ³¡");
-    }
-
-    private void Start()
+    protected override void Init()
     {
 
     }
 
     public void StartWaitLoading(float duration, Action act)
     {
-        if (WaitManager.instance == null) return;
+        if (WaitManager.Instance == null) return;
 
         if (loadingBackReal == null)
         {
@@ -35,7 +24,7 @@ public class WaitLoadingManager : MonoBehaviour
 
         loadingBackReal.SetActive(true);
         act += SetEraseLoadingBack;
-        WaitManager.instance.StartWait(duration, act);
+        WaitManager.Instance.StartWait(duration, act);
     }
 
     void CreateWaitOb()
@@ -49,9 +38,12 @@ public class WaitLoadingManager : MonoBehaviour
 
     public void Clear()
     {
-        WaitManager.instance.StopAllCoroutines();
+        WaitManager.Instance.StopAllCoroutines();
     }
 
-    public void SetEraseLoadingBack() { loadingBackReal.SetActive(false); }
+    public void SetEraseLoadingBack() 
+    { 
+        loadingBackReal.SetActive(false);
+    }
 }
 

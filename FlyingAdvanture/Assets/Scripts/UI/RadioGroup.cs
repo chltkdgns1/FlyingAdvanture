@@ -23,6 +23,15 @@ public class RadioGroup : MonoBehaviour
         radioGroup[0].SetActive(true);
     }
 
+    public void Selected(int index)
+    {
+        for (int i = 0; i < radioGroup.Length; i++)
+        {
+            radioGroup[i].SetActive(false);
+        }
+        radioGroup[index].SetActive(true);
+    }
+
     public void NextMove()
     {
         if (_nPos == radioGroup.Length - 1) return;

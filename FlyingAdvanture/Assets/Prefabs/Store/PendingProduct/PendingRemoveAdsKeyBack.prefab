@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2834602072367425114}
   - component: {fileID: 2834602072367425116}
   - component: {fileID: 2834602072367425115}
-  - component: {fileID: 4285796948375810273}
   m_Layer: 5
   m_Name: Money
   m_TagString: Untagged
@@ -81,46 +80,6 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "1000 \uC6D0"
---- !u!114 &4285796948375810273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2834602072367425113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_StringReference:
-    m_TableReference:
-      m_TableCollectionName: GUID:e28ca834fd6865c45a1bbce61e5d5707
-    m_TableEntryReference:
-      m_KeyId: 1232102047391744
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  m_FormatArguments: []
-  m_UpdateString:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2834602072367425115}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
-        m_MethodName: set_text
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-  references:
-    version: 2
-    RefIds: []
 --- !u!1 &2834602072403064199
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +91,6 @@ GameObject:
   - component: {fileID: 2834602072403064200}
   - component: {fileID: 2834602072403064202}
   - component: {fileID: 2834602072403064201}
-  - component: {fileID: 3626864018850849998}
   m_Layer: 5
   m_Name: Content1
   m_TagString: Untagged
@@ -202,46 +160,6 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "<color=#F9D271>\uAD11\uACE0 \uC81C\uAC70</color> <color=#B6A7CB>\uC5F4\uC1E0</color>"
---- !u!114 &3626864018850849998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2834602072403064199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_StringReference:
-    m_TableReference:
-      m_TableCollectionName: GUID:e28ca834fd6865c45a1bbce61e5d5707
-    m_TableEntryReference:
-      m_KeyId: 1229424273694720
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  m_FormatArguments: []
-  m_UpdateString:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2834602072403064201}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
-        m_MethodName: set_text
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-  references:
-    version: 2
-    RefIds: []
 --- !u!1 &2834602073546960836
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +171,6 @@ GameObject:
   - component: {fileID: 2834602073546960837}
   - component: {fileID: 2834602073546960839}
   - component: {fileID: 2834602073546960838}
-  - component: {fileID: 4970208160406047598}
   m_Layer: 5
   m_Name: Content2
   m_TagString: Untagged
@@ -323,46 +240,6 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "<color=#90B1FF>80% \uD655\uB960</color>"
---- !u!114 &4970208160406047598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2834602073546960836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_StringReference:
-    m_TableReference:
-      m_TableCollectionName: GUID:e28ca834fd6865c45a1bbce61e5d5707
-    m_TableEntryReference:
-      m_KeyId: 1231830420070400
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  m_FormatArguments: []
-  m_UpdateString:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2834602073546960838}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
-        m_MethodName: set_text
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-  references:
-    version: 2
-    RefIds: []
 --- !u!1 &2834602073686538610
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,7 +484,6 @@ GameObject:
   - component: {fileID: 3429496887442113495}
   - component: {fileID: 3429496887442113497}
   - component: {fileID: 3429496887442113496}
-  - component: {fileID: -5515193117072784152}
   m_Layer: 5
   m_Name: PendingRemoveAdsKeyBack
   m_TagString: UIStoreRemoveAds
@@ -674,24 +550,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &-5515193117072784152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2834602074282443311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aac0533aa25bf3c4e9ac71ee36fa5ac0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetOject: {fileID: 2834602074282443311}
-  size: 0.8
-  duration: 0.5
-  compStr: 
-  methodStr: 
-  IsUseClickedOption: 1
 --- !u!1 &6987459767063638287
 GameObject:
   m_ObjectHideFlags: 0

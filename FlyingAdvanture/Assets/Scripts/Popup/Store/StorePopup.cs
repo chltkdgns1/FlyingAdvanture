@@ -27,7 +27,7 @@ public class StorePopup : PopupComponent
     PurchaseMoneyAnimation moneyTxt;
 
     [SerializeField]
-    UIFrame moneyFrame;
+    MoneyTextFrame moneyFrame;
 
     [Serializable]
     class MenuManage

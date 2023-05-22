@@ -88,7 +88,6 @@ GameObject:
   - component: {fileID: 3984300336177311435}
   - component: {fileID: 3984300336177311437}
   - component: {fileID: 3984300336177311434}
-  - component: {fileID: 8201738120193678635}
   - component: {fileID: 6661557002666957441}
   m_Layer: 5
   m_Name: RemoveAdsKeGoldBack
@@ -156,26 +155,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8201738120193678635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1991945855361571055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aac0533aa25bf3c4e9ac71ee36fa5ac0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetOject: {fileID: 1991945855361571055}
-  size: 0.8
-  duration: 0.5
-  compStr: PurchaseInAppGame
-  methodStr: OnClickProduct
-  IsUseClickedOption: 1
-  enableSprite: {fileID: 0}
-  unenableSprite: {fileID: 0}
 --- !u!114 &6661557002666957441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,7 +181,6 @@ GameObject:
   - component: {fileID: 1991945855408168502}
   - component: {fileID: 1991945855408168488}
   - component: {fileID: 1991945855408168489}
-  - component: {fileID: 4098070937087469250}
   m_Layer: 5
   m_Name: Content1
   m_TagString: Untagged
@@ -271,47 +249,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: <color=#F9D271>Remove Ads</color> <color=#B6A7CB>Key</color>
---- !u!114 &4098070937087469250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1991945855408168503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_StringReference:
-    m_TableReference:
-      m_TableCollectionName: GUID:e28ca834fd6865c45a1bbce61e5d5707
-    m_TableEntryReference:
-      m_KeyId: 1229424273694720
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  m_FormatArguments: []
-  m_UpdateString:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1991945855408168489}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
-        m_MethodName: set_text
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-  references:
-    version: 2
-    RefIds: []
+  m_Text: "<color=#F9D271>\uAD11\uACE0 \uC81C\uAC70</color> <color=#B6A7CB>\uC5F4\uC1E0</color>"
 --- !u!1 &1991945855487755039
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,7 +494,6 @@ GameObject:
   - component: {fileID: 1991945856664758638}
   - component: {fileID: 1991945856664758624}
   - component: {fileID: 1991945856664758625}
-  - component: {fileID: 6991799996565283261}
   m_Layer: 5
   m_Name: Money
   m_TagString: Untagged
@@ -625,47 +562,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 1000 Gold
---- !u!114 &6991799996565283261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1991945856664758639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_StringReference:
-    m_TableReference:
-      m_TableCollectionName: GUID:e28ca834fd6865c45a1bbce61e5d5707
-    m_TableEntryReference:
-      m_KeyId: 1230243354157056
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  m_FormatArguments: []
-  m_UpdateString:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1991945856664758625}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
-        m_MethodName: set_text
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-  references:
-    version: 2
-    RefIds: []
+  m_Text: "1000 \uACE8\uB4DC"
 --- !u!1 &1991945856833607496
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,7 +574,6 @@ GameObject:
   - component: {fileID: 1991945856833607499}
   - component: {fileID: 1991945856833607501}
   - component: {fileID: 1991945856833607498}
-  - component: {fileID: 5278066644916795220}
   m_Layer: 5
   m_Name: Content2
   m_TagString: Untagged
@@ -746,44 +642,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: <color=#90B1FF>1% Chance</color>
---- !u!114 &5278066644916795220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1991945856833607496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_StringReference:
-    m_TableReference:
-      m_TableCollectionName: GUID:e28ca834fd6865c45a1bbce61e5d5707
-    m_TableEntryReference:
-      m_KeyId: 1229849085386752
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  m_FormatArguments: []
-  m_UpdateString:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1991945856833607498}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
-        m_MethodName: set_text
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-  references:
-    version: 2
-    RefIds: []
+  m_Text: "<color=#90B1FF>1% \uD655\uB8F0</color>"

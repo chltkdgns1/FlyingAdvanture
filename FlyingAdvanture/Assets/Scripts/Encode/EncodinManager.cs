@@ -99,6 +99,8 @@ public class EncryFloat
         tempParts = new string[encrySize];
     }
 
+
+
     public EncryFloat(float value) : this()
     {
         SetFloat(value);

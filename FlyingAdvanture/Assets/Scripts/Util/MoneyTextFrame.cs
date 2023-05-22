@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UIFrame : MonoBehaviour
+public class MoneyTextFrame: MonoBehaviour
 {
     public int normalCnt;
     public float perWidth;

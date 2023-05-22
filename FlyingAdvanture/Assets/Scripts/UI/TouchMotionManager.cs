@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TouchMotionManager : MonoBehaviour
+public class TouchMotionManager : MonoSingleTon<TouchMotionManager>
 {
     static TouchMotionManager instance;
 
@@ -15,17 +15,19 @@ public class TouchMotionManager : MonoBehaviour
 
     int index;
 
+    protected override void Init()
+    {
+
+    }
+
     private void Awake()
     {
-        if (instance == null) instance = this;
-        else enabled = false;
-
         CreateObjectPool();
     }
 
     public void Start()
     {
-        index = TouchScreen.AddEvent(OnTCEvent);
+        index = TouchScreen.Instance.AddEvent(OnTCEvent);
     }
 
     public void OnTCEvent(Vector3 pos)

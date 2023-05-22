@@ -2,10 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ApplicationManager : MonoBehaviour
+public class ApplicationManager : MonoSingleTon<ApplicationManager>
 {
-    public static ApplicationManager instance;
-
     public bool UseTestGoogleLogin;
 
     public enum VersionCheck
@@ -16,25 +14,26 @@ public class ApplicationManager : MonoBehaviour
         LASTEST
     }
 
-    private void OnApplicationQuit()
+    protected override void Init()
     {
+
+    }
+
+    protected override void OnApplicationQuit()
+    {
+        base.OnApplicationQuit();
         GlobalData.soundSettings.SaveAll();
     }
 
     public void Awake()
-    {
-        if (instance == null) instance = this;
-        else
-        {
-            enabled = false;
-            return;
-        }
+    {   
+        Application.targetFrameRate = 140;
 
-//#if UNITY_EDITOR
-//        DefineSymbolManager.Clear();
-//        DefineSymbolManager.AddSymbol("DEV");
-//        DefineSymbolManager.SetSymbolSetting();
-//#endif
+        //#if UNITY_EDITOR
+        //        DefineSymbolManager.Clear();
+        //        DefineSymbolManager.AddSymbol("DEV");
+        //        DefineSymbolManager.SetSymbolSetting();
+        //#endif
 
         ConvertLanguage.SetLanguage();
 

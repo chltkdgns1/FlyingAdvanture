@@ -106,7 +106,7 @@ public class IntroSceneManager : MonoBehaviour
                             _mainTextArr[i].rectTransform.position = vecArr[i];
                         }
 
-                        WaitManager.instance.StartWait(1f, () =>
+                        WaitManager.Instance.StartWait(1f, () =>
                         {
                             EraseTxt();
                         });
@@ -200,7 +200,7 @@ public class IntroSceneManager : MonoBehaviour
             var popup = PopupComponent.PopupShow<NoticePopup>(PopupPath.PopupNotice);
             popup.SetOkAct(UtilManager.Quit);
             popup.SetCancleAct(UtilManager.Quit);
-            WaitManager.instance.StartWait(20f, () =>
+            WaitManager.Instance.StartWait(20f, () =>
             {
                 UtilManager.Quit();
             });

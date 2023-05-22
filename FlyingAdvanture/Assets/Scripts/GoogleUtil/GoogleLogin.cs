@@ -37,7 +37,7 @@ public class GoogleLogin
                 if (bSuccess == false)
                 {
 #if UNITY_EDITOR
-                    if (ApplicationManager.instance.UseTestGoogleLogin == true)
+                    if (ApplicationManager.Instance.UseTestGoogleLogin == true)
                     {
                         GlobalData.IsGoogleLogin = true;
                         GlobalData.Uid = "123";
@@ -93,7 +93,7 @@ public class GoogleLogin
                         });
                     }
 
-                    if (ApplicationManager.instance.UseTestGoogleLogin == false)
+                    if (ApplicationManager.Instance.UseTestGoogleLogin == false)
                     {
                         GlobalData.IsGoogleLogin = false;
                         fail?.Invoke();

@@ -40,9 +40,9 @@ public class CompletePopup : PopupComponent
 
         for (int i = 0; i < startCnt; i++)
         {
-            WaitManager.instance.StartWait(WaitTime, i, (object index) =>
+            WaitManager.Instance.StartWait(WaitTime, () =>
             {
-                startEffectGroupArr[(int)index].ExReverseStarEffect();
+                startEffectGroupArr[i].ExReverseStarEffect();
             });
             WaitTime += 0.5f;
         }

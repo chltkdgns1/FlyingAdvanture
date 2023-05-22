@@ -6,14 +6,7 @@ using UnityEngine;
 
 public static class LanguageString
 {
-    public static string GetStageString()
-    {
-        if(ConvertLanguage.languageStatus == ConvertLanguage.Contry.KOREAN)
-        {
-            return "스테이지";
-        }
-        return "STAGE";
-    }
+
 }
 
 public class ConvertLanguage
@@ -42,7 +35,6 @@ public class ConvertLanguage
 
     static void UserLocalization(Contry country)
     {
-        //LocalizationSettings.SelectedLocale =
-        //    LocalizationSettings.AvailableLocales.Locales[(int)country];
+
     }
 }
