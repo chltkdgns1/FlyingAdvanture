@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class TimeDataEncry
 {
     public EncryFloat[] timeArray;
@@ -75,7 +77,7 @@ public class StageDataEncry
 public class StageData
 {
     public StageState state;
-    public int startCnt; // º° ¸î°³ÀÎÁö
+    public int startCnt; // ë³„ ëª‡ê°œì¸ì§€
 
     public StageData(StageState state, int startCnt)
     {
@@ -263,7 +265,7 @@ public class GlobalDataConnector
     public void SetFromDic(Dictionary<string, object> value)
     {
         coin = UtilManager.GetLongValueDic(value, StringList.FirebaseCoin);
-        Debug.Log("ÄÚÀÎ : " + coin);
+        Debug.Log("ì½”ì¸ : " + coin);
         unLockPage = UtilManager.GetIntValueDic(value, StringList.FirebaseUnLockPage);
         IsDeleteAds = UtilManager.GetBoolValueDic(value, StringList.FirebaseDeleteAds);
         stageGroup.SetFromDic((Dictionary<string, object>)value[StringList.FirebaseStageGroup]);
@@ -290,7 +292,7 @@ public class GlobalDataConnector
         GlobalData.IsDeleteAds = IsDeleteAds;
         GlobalData.UnLockPage = unLockPage;
 
-        if (GlobalData.UnLockPage == 0)  // ¾ğ¶ô ÆäÀÌÁö Á¤º¸°¡ ¾ø´Ù¸é, 1ÆäÀÌÁö·Î °íÁ¤
+        if (GlobalData.UnLockPage == 0)  // ì–¸ë½ í˜ì´ì§€ ì •ë³´ê°€ ì—†ë‹¤ë©´, 1í˜ì´ì§€ë¡œ ê³ ì •
             GlobalData.UnLockPage = 2;
     }
 
@@ -322,6 +324,8 @@ public class GlobalData
     static private EncryString uid = new EncryString("000000000");
 
     static private EncryBool isOpenRankingChallenge = new EncryBool(false);
+
+    static private IGameLogic gameLogic = null;
 
     public class Sound
     {
@@ -412,7 +416,7 @@ public class GlobalData
         set { uid.value = value; }
     }
 
-    // 1ºÎÅÍ ½ÃÀÛ
+    // 1ë¶€í„° ì‹œì‘
     static public int UnLockPage
     {
         get { return (int)unLockPage.value; }
@@ -448,6 +452,12 @@ public class GlobalData
     {
         get { return _stageGroupEncry; }
         set { _stageGroupEncry = value; }
+    }
+
+    public static IGameLogic gameLogicData
+    {
+        get { return gameLogic; }
+        set { gameLogic = value; }
     }
 
     static public void OnStatic()

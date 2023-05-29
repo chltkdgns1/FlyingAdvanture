@@ -20,5 +20,12 @@ public class Idle : IAction
     public void OnFinish(Action act) { }
     public void OnTarget(Vector3 pos) { }
     public void OnAccel(Vector3 pos) { }
+    public void OnRotationStart(Vector3 pos) { }
+    public void OnRotationFinish(Vector3 pos) { }
+#if UNITY_EDITOR
+    public void OnKeyBoardArrow(KeyCode code)
+    {
 
+    }
+#endif
 }

@@ -12,6 +12,8 @@ public class Player : MonoBehaviour, ICharacter
     IAction action;
     EncryFloat speed = new EncryFloat();
 
+    CustomRigidMove customRigidMove;
+
     public IAction ActionData
     {
         get { return action; }
@@ -21,11 +23,17 @@ public class Player : MonoBehaviour, ICharacter
     private void Awake()
     {
         speed.value = 2f;
+        customRigidMove = GetComponent<CustomRigidMove>();
     }
 
     private void Update()
     {
         action.ExcuteAction();
+    }
+
+    public CustomRigidMove GetCustomRigidMove()
+    {
+        return customRigidMove;
     }
 
     public Transform GetTransform()

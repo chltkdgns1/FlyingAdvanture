@@ -11,9 +11,12 @@ public class TouchScreen : MonoSingleTon<TouchScreen>
 
     public List<Action<Vector3>> touchAct = new List<Action<Vector3>>();
     public List<Action<MultiTouchData>> multiTouchAct = new List<Action<MultiTouchData>>();
-    public List<Action<Vector3>> ClickAct = new List<Action<Vector3>>();
+    public List<Action<Vector3>> dragDownAct = new List<Action<Vector3>>();
+    public List<Action<Vector3>> dragUpAct = new List<Action<Vector3>>();
 
     public Vector3 centerPos;
+
+    public bool isDragState = false;
 
     protected override void Init()
     {
@@ -22,18 +25,28 @@ public class TouchScreen : MonoSingleTon<TouchScreen>
 
     public void AddEvent(int index, Action<Vector3> act)
     {
-        if (touchAct.Count <= index || ClickAct.Count <= index)
+        if (touchAct.Count <= index)
             return;
 
         touchAct[index] += act;
-        ClickAct[index] += act;
     }
 
     public int AddEvent(Action<Vector3> act)
     {
         touchAct.Add(act);
-        ClickAct.Add(act);
         return touchAct.Count - 1;
+    }
+
+    public int AddDragDownEvent(Action<Vector3> act)
+    {
+        dragDownAct.Add(act);
+        return dragDownAct.Count - 1;
+    }
+
+    public int AddDragUpEvent(Action<Vector3> act)
+    {
+        dragUpAct.Add(act);
+        return dragUpAct.Count - 1;
     }
 
     public int AddMultiTouchEvent(Action<MultiTouchData> act)
@@ -45,7 +58,16 @@ public class TouchScreen : MonoSingleTon<TouchScreen>
     public void DeleteEvent(int index, Action<Vector3> act)
     {
         touchAct[index] -= act;
-        ClickAct[index] -= act;
+    }
+
+    public void DeleteDragDownEvent(int index, Action<Vector3> act)
+    {
+        dragDownAct[index] -= act;
+    }
+
+    public void DeleteDragUpEvent(int index, Action<Vector3> act)
+    {
+        dragUpAct[index] -= act;
     }
 
     public void DeleteMultiTouchEvent(int index, Action<MultiTouchData> act)
@@ -55,16 +77,34 @@ public class TouchScreen : MonoSingleTon<TouchScreen>
 
     private void Update()
     {
-        if (Input.touchCount > 0)
+#if UNITY_EDITOR
+        if (Input.GetMouseButtonUp(0))
         {
-            OnTouchEvent();
-            OnMultiTouchEvent();
+            OnMouseEvent();
+            OnMouseDragUpEvent();
+
+            isDragState = false;
         }
 
         if (Input.GetMouseButtonDown(0))
         {
-            OnMouseEvent();
+            isDragState = true;
+            OnMouseDragDownEvent();
         }
+
+        if (isDragState)
+        {
+            OnMouseDragDownEvent();
+        }
+#else
+        if (Input.touchCount > 0)
+        {
+            OnTouchEvent();
+            OnMultiTouchEvent();
+            OnTouchDragDownEvent();
+            OnTouchDragUpEvent();
+        }
+#endif
     }
 
     void OnTouchEvent()
@@ -78,6 +118,36 @@ public class TouchScreen : MonoSingleTon<TouchScreen>
             for (int i = 0; i < cnt; i++)
             {
                 touchAct[i]?.Invoke(pos);
+            }
+        }
+    }
+
+    void OnTouchDragDownEvent()
+    {
+        Touch touch = Input.GetTouch(0);
+        Vector3 pos = touch.position;
+
+        if (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved)
+        {
+            int cnt = dragDownAct.Count;
+            for (int i = 0; i < cnt; i++)
+            {
+                dragDownAct[i]?.Invoke(pos);
+            }
+        }
+    }
+
+    void OnTouchDragUpEvent()
+    {
+        Touch touch = Input.GetTouch(0);
+        Vector3 pos = touch.position;
+
+        if (touch.phase == TouchPhase.Canceled)
+        {
+            int cnt = dragDownAct.Count;
+            for (int i = 0; i < cnt; i++)
+            {
+                dragDownAct[i]?.Invoke(pos);
             }
         }
     }
@@ -99,13 +169,36 @@ public class TouchScreen : MonoSingleTon<TouchScreen>
         }
     }
 
+
+#if UNITY_EDITOR
     void OnMouseEvent()
     {
         Vector3 pos = Input.mousePosition;
-        int cnt = ClickAct.Count;
+        int cnt = touchAct.Count;
         for (int i = 0; i < cnt; i++)
         {
-            ClickAct[i]?.Invoke(pos);
+            touchAct[i]?.Invoke(pos);
         }
     }
+
+    private void OnMouseDragUpEvent()
+    {
+        Vector3 pos = Input.mousePosition;
+        int upCnt = dragUpAct.Count;
+        for (int i = 0; i < upCnt; i++)
+        {
+            dragUpAct[i]?.Invoke(pos);
+        }
+    }
+
+    private void OnMouseDragDownEvent()
+    {
+        Vector3 pos = Input.mousePosition;
+        int cnt = dragDownAct.Count;
+        for (int i = 0; i < cnt; i++)
+        {
+            dragDownAct[i]?.Invoke(pos);
+        }
+    }
+#endif
 }

@@ -24,8 +24,17 @@ public class Collisions : IAction
     }
     public void OnTarget(Vector3 pos) { }
     public void OnAccel(Vector3 pos) { }
+    public void OnRotationStart(Vector3 pos) { }
+    public void OnRotationFinish(Vector3 pos) { }
     public void OnFinish(Action act)
     {
         onFinish = act;
     }
+
+#if UNITY_EDITOR
+    public void OnKeyBoardArrow(KeyCode code)
+    {
+
+    }
+#endif
 }
