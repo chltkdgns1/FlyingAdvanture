@@ -30,7 +30,7 @@ public class Move : IAction
         speed = characterData.GetSpeed();
 
 #if UNITY_EDITOR
-        resistanceSpeed = new EncryFloat(0.01f);
+        resistanceSpeed = new EncryFloat(0.1f);
 #else
         // 기울기 값에 대한 적절한 값을 찾아야함
         resistanceSpeed = new EncryFloat(0.01f);
@@ -40,8 +40,8 @@ public class Move : IAction
     public void ExcuteAction()
     {
         var force = customRigidMove.GetForce();
-        charTrans.position += force;
-        force *= 0.0001f;
+        charTrans.position += force * Time.deltaTime;
+        force *= 0.001f;
         customRigidMove.AddForce(-force);
     }
 
@@ -55,12 +55,12 @@ public class Move : IAction
 
         var nextPos = new Vector3(pos.x, 0, pos.y);
         nextPos = charTrans.TransformVector(nextPos);
-        customRigidMove.AddForce(nextPos * Time.deltaTime * speed.GetFloat() * resistanceSpeed.GetFloat());
+        customRigidMove.AddForce(nextPos * speed.GetFloat() * resistanceSpeed.GetFloat());
     }
 
     public void OnAccel(Vector3 pos)
     {
-        customRigidMove.AddForce(new Vector3(pos.x, 0, pos.y) * Time.deltaTime * speed.GetFloat() * resistanceSpeed.GetFloat());
+        customRigidMove.AddForce(new Vector3(pos.x, 0, pos.y) * speed.GetFloat() * resistanceSpeed.GetFloat());
     }
 
     public void OnRotationStart(Vector3 pos) 
@@ -106,19 +106,19 @@ public class Move : IAction
         {
             case KeyCode.RightArrow:
                 force = charTrans.TransformVector(Vector3.right);
-                customRigidMove.AddForce(force * Time.deltaTime * speed.GetFloat() * resistanceSpeed.GetFloat());
+                customRigidMove.AddForce(force * speed.GetFloat() * resistanceSpeed.GetFloat());
                 break;
             case KeyCode.UpArrow:
                 force = charTrans.TransformVector(new Vector3(0,0,1));
-                customRigidMove.AddForce(force * Time.deltaTime * speed.GetFloat() * resistanceSpeed.GetFloat());
+                customRigidMove.AddForce(force * speed.GetFloat() * resistanceSpeed.GetFloat());
                 break;
             case KeyCode.LeftArrow:
                 force = charTrans.TransformVector(Vector3.left);
-                customRigidMove.AddForce(force * Time.deltaTime * speed.GetFloat() * resistanceSpeed.GetFloat());
+                customRigidMove.AddForce(force * speed.GetFloat() * resistanceSpeed.GetFloat());
                 break;
             case KeyCode.DownArrow:
                 force = charTrans.TransformVector(new Vector3(0, 0, -1));
-                customRigidMove.AddForce(force * Time.deltaTime * speed.GetFloat() * resistanceSpeed.GetFloat());
+                customRigidMove.AddForce(force * speed.GetFloat() * resistanceSpeed.GetFloat());
                 break;
         }
     }

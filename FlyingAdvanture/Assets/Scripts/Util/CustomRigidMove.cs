@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CustomRigidMove : MonoBehaviour
 {
-    public float limitX = 1f;
-    public float limitY = 1f;
-    public float limitZ = 1f;
+    float limitX = 10f;
+    float limitY = 10f;
+    float limitZ = 10f;
 
     private Vector3 sumForce;
 
@@ -23,9 +23,9 @@ public class CustomRigidMove : MonoBehaviour
 
     void SetLimitForce()
     {
-        float x = Mathf.Min(limitX, sumForce.x);
-        float y = Mathf.Min(limitY, sumForce.y);
-        float z = Mathf.Min(limitZ, sumForce.z);
+        float x = Mathf.Max(-limitX, Mathf.Min(limitX, sumForce.x));
+        float y = Mathf.Max(-limitY, Mathf.Min(limitY, sumForce.y));
+        float z = Mathf.Max(-limitZ, Mathf.Min(limitZ, sumForce.z));
         sumForce = new Vector3(x, y, z);
     }
 }
