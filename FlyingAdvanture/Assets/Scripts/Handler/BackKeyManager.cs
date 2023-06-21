@@ -43,7 +43,7 @@ public class BackKeyManager : MonoSingleTon<BackKeyManager>
 
         if (isEmpty)
         {
-            if (PlayingGameManager.IsInGame())
+            if (GlobalData.gameState.gamePos == GameStateData.GamePos.INGANESCENE)
             {
                 // 인게임일 경우 팝업창을 출력한다.
                 //InGameManager.instance?.SetPrintGamePausePopup();

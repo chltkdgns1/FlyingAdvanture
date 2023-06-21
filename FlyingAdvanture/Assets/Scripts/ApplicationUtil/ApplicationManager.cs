@@ -40,7 +40,6 @@ public class ApplicationManager : MonoSingleTon<ApplicationManager>
         GoogleFirebaseManager.OnStatic();
         GoogleAds.OnStatic();
         GoogleLogin.OnStatic();
-        PlayingGameManager.OnStatic();
         GlobalData.OnStatic();
         StringList.OnStatic();
 

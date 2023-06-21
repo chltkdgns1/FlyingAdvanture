@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Toggle : MonoBehaviour
+public class CustomToggle : MonoBehaviour
 {
     [SerializeField]
     GameObject onOb;

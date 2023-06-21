@@ -28,13 +28,13 @@ public class InGameTimer : MonoBehaviour
     public void StartInGameTimer()
     {
         ResetTimer();
-        int level = PlayingGameManager.gameLevel.Value - 1;
-        double time = GlobalData.TimeDataPro.timeArray[level].GetFloat();
-        timerKey = Timer.StartTimer(time * 1000f);
-        StartCoroutine(StartTimer(time * 1000f, () =>
-        {
-            //InGameManager.instance.GameOver();
-        }));
+        //int level = PlayingGameManager.gameLevel.Value - 1;
+        //double time = GlobalData.TimeDataPro.timeArray[level].GetFloat();
+        //timerKey = Timer.StartTimer(time * 1000f);
+        //StartCoroutine(StartTimer(time * 1000f, () =>
+        //{
+        //    //InGameManager.instance.GameOver();
+        //}));
     }
 
     public void ResetTimer()

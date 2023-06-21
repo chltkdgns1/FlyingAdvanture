@@ -2,14 +2,11 @@ using UnityEngine;
 
 public class TouchMotionManager : MonoSingleTon<TouchMotionManager>
 {
-    static TouchMotionManager instance;
-
     [SerializeField]
     GameObject touchMotionPrefabs;
 
     GameObject[] touchMotionPool;
 
-    SceneState gameState;
     int poolIndex = 0;
     int poolSize = 10;
 
@@ -32,12 +29,7 @@ public class TouchMotionManager : MonoSingleTon<TouchMotionManager>
 
     public void OnTCEvent(Vector3 pos)
     {
-        if (gameState != PlayingGameManager.sceneState)
-        {
-            gameState = PlayingGameManager.sceneState;
-            CreateObjectPool();
-        }
-
+        CreateObjectPool();
         StartTouchMotion(pos);
     }
 
@@ -63,7 +55,6 @@ public class TouchMotionManager : MonoSingleTon<TouchMotionManager>
         poolIndex %= poolSize;
     }
 
-
     void CreateObjectPool()
     {
         if (touchMotionPrefabs == null)
@@ -79,7 +70,8 @@ public class TouchMotionManager : MonoSingleTon<TouchMotionManager>
             return;
         }
 
-        gameState = PlayingGameManager.sceneState;
+        if (touchMotionPool.Length > 0)
+            return;
 
         if (touchMotionPool == null)
             touchMotionPool = new GameObject[poolSize];

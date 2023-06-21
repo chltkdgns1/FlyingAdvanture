@@ -21,6 +21,8 @@ public class Move : IAction
     bool isRotationState = false;
     Vector3 dragePos;
 
+    Quaternion forwardQuat = Quaternion.identity;
+
     public Move(ICharacter characterData)
     {
         this.characterData = characterData;
@@ -28,6 +30,8 @@ public class Move : IAction
         charRigid = characterData.GetRigidBody();
         customRigidMove = characterData.GetCustomRigidMove();
         speed = characterData.GetSpeed();
+
+        forwardQuat = Quaternion.Euler(new Vector3(0f, 0f, 0f));
 
 #if UNITY_EDITOR
         resistanceSpeed = new EncryFloat(0.1f);
@@ -43,6 +47,11 @@ public class Move : IAction
         charTrans.position += force * Time.deltaTime;
         force *= 0.001f;
         customRigidMove.AddForce(-force);
+
+        if (isRotationState == false)
+        {
+            charTrans.rotation = Quaternion.Lerp(charTrans.rotation, forwardQuat, Time.deltaTime * 1f);
+        }
     }
 
     public void OnTarget(Vector3 pos)
@@ -84,7 +93,7 @@ public class Move : IAction
 
     public void Rotation(Vector3 pos)
     {
-        Vector3 targetRotation = (pos - dragePos) * GameSettingData.sensitiveAngle * GameSettingData.sensitive;
+        Vector3 targetRotation = (pos - dragePos) * GameSettingData.sensitiveAngle * GameSettingData.sensitive * Time.deltaTime;
         charTrans.Rotate(new Vector3(-targetRotation.y, targetRotation.x, 0));
     }
 

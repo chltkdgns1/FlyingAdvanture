@@ -6,10 +6,10 @@ public class SettingPopup : PopupComponent
     UIButtonEx logoutBtn;
 
     [SerializeField]
-    Toggle inGameSoundToggle;
+    CustomToggle inGameSoundToggle;
 
     [SerializeField]
-    Toggle BackGroundSoundToggle;
+    CustomToggle BackGroundSoundToggle;
 
     protected void Awake()
     {

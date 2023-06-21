@@ -136,7 +136,37 @@ public class UtilManager
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
-        Application.Quit(); // ¾îÇÃ¸®ÄÉÀÌ¼Ç Á¾·á
+        Application.Quit(); // ì–´í”Œë¦¬ì¼€ì´ì…˜ ì¢…ë£Œ
 #endif
+    }
+
+    static public Vector3 GetReverseAngle(Vector3 angle)
+    {
+        float x = angle.x > 0 ? -angle.x : angle.x;
+        float y = angle.y > 0 ? -angle.y : angle.y;
+        float z = angle.z > 0 ? -angle.z : angle.z;
+        return new Vector3(x, y, z);
+    }
+
+    static public Vector3 GetMinAngleAbs(Vector3 angles)
+    {
+        float x = GetMaxAbs(angles.x, GetPosAngle(angles.x));
+        float y = GetMaxAbs(angles.y, GetPosAngle(angles.y));
+        float z = GetMaxAbs(angles.z, GetPosAngle(angles.z));
+        return new Vector3(x, y, z);
+    }
+
+    static float GetPosAngle(float x)
+    {
+        return 360 - x;
+    }
+
+    static float GetMaxAbs(float x, float y)
+    {
+        float absX = Mathf.Abs(x);
+        float absY = Mathf.Abs(y);
+        if (absX > absY)
+            return x;
+        return -x;
     }
 }

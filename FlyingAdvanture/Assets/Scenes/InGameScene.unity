@@ -1567,6 +1567,7 @@ GameObject:
   - component: {fileID: 6469494626665067290}
   - component: {fileID: 6469494626665067289}
   - component: {fileID: 6469494626665067291}
+  - component: {fileID: 6469494626665067292}
   m_Layer: 0
   m_Name: MMarket_WizardBroomstick
   m_TagString: Untagged
@@ -2089,6 +2090,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 884e227e0af767b4f849b9773fe00314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6469494626665067292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502385967356813020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1092acde464f9141b6dd3581e6a41a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!65 &6517065897500246839
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -302,6 +302,25 @@ public class GlobalDataConnector
     }
 }
 
+public class GameStateData
+{
+    public enum GamePos
+    {
+        INTROSCENE,
+        LOBBYSCENE,
+        INGANESCENE
+    }
+
+    public enum GamePlayState
+    {
+        PLAY,
+        WAITING
+    }
+
+    public GamePos gamePos;
+    public GamePlayState gamePlayeState;
+}
+
 public class GlobalData
 {
     private static EncryNumber stageSize = new EncryNumber(90);
@@ -326,6 +345,10 @@ public class GlobalData
     static private EncryBool isOpenRankingChallenge = new EncryBool(false);
 
     static private IGameLogic gameLogic = null;
+
+    static private string photonGameVersion = "1";
+
+    static public GameStateData gameState = new GameStateData();
 
     public class Sound
     {
@@ -371,6 +394,10 @@ public class GlobalData
         timeDataEncry = timeData.GetTimeDataEncry();
     }
 
+    static public string PhotonGameVersion
+    {
+        get { return photonGameVersion; }
+    }
     static public int StageSize
     {
         get { return (int)stageSize.value; }

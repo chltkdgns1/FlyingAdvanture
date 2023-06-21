@@ -10,8 +10,8 @@ public partial class LobbySceneManager : MonoBehaviour
         if (instance == null) instance = this;
         else enabled = false;
 
-        PlayingGameManager.gameState = GameState.LOBBY;
-        PlayingGameManager.sceneState = SceneState.LOBBY;
+        //PlayingGameManager.gameState = GameState.LOBBY;
+       // PlayingGameManager.sceneState = SceneState.LOBBY;
     }
 
     private void Start()

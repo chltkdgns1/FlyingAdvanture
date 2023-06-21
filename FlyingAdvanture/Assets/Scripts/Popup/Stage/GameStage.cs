@@ -100,7 +100,7 @@ public class GameStage : MonoBehaviour
                 if (pageStageEnd < clickStageNum)
                     return;
 
-                PlayingGameManager.gameLevel = index + 1;
+                //PlayingGameManager.gameLevel = index + 1;
                 LoadSceneManager.instance.LoadScene(StringList.InGameScene);
 
                 //WaitLoadingManager.instance.StartWaitLoading(2f, () =>
@@ -197,7 +197,7 @@ public class GameStage : MonoBehaviour
             if (index == endIndex)
                 levelList[i].bottomLineParLongOb.SetActive(false);
 
-            if (tempList.stageDataList[i].state == StageState.CLEAR)  // ≈¨∏ÆæÓ«ﬂ¥Ÿ∏È
+            if (tempList.stageDataList[i].state == StageState.CLEAR)  // ÌÅ¥Î¶¨Ïñ¥ÌñàÎã§Î©¥
             {
                 levelList[i].txt.text = (i + 1).ToString();
                 levelList[i].txt.color = new Color(1f, 1f, 1f, 1f);
@@ -249,7 +249,7 @@ public class GameStage : MonoBehaviour
             if (index == endIndex || index == startIndex)
                 levelList[i].bottomLineParLongOb.SetActive(false);
 
-            if (tempList.stageDataList[i].state == StageState.CLEAR)  // ≈¨∏ÆæÓ«ﬂ¥Ÿ∏È
+            if (tempList.stageDataList[i].state == StageState.CLEAR)  // ÌÅ¥Î¶¨Ïñ¥ÌñàÎã§Î©¥
             {
                 levelList[i].txt.text = (i + 1).ToString();
                 levelList[i].txt.color = new Color(1f, 1f, 1f, 1f);
