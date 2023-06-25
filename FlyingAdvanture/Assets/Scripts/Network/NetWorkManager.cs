@@ -10,6 +10,8 @@ public class NetWorkManager : MonoSingleTon<NetWorkManager>
     bool disconnectMessage;
     bool IsDiconnect = false;
 
+    public bool IsConnectNetWork = false;
+
     protected override void Init()
     {
         ResetState();
@@ -19,21 +21,16 @@ public class NetWorkManager : MonoSingleTon<NetWorkManager>
     {
         if (Application.internetReachability == NetworkReachability.NotReachable)
         {
-            disconnectTime += Time.deltaTime;
-            PrintLinkLessMesssage();
-
-            if (disconnectLimitTime <= disconnectTime)
-            {
-                Disconnect();
-                return;
-            }
-
-            GlobalData.IsConnectNetWork = false;
+            IsConnectNetWork = false;
+            if (LoadingUI.Instance.isActive == false)
+                LoadingUI.Instance.isActive = true;
         }
         else
         {
             ResetState();
-            GlobalData.IsConnectNetWork = true;
+            IsConnectNetWork = true;
+            if (LoadingUI.Instance.isActive == true)
+                LoadingUI.Instance.isActive = false;
         }
     }
 
@@ -57,16 +54,6 @@ public class NetWorkManager : MonoSingleTon<NetWorkManager>
     {
         disconnectMessage = false;
         disconnectTime = 0f;
-    }
-
-
-    void PrintLinkLessMesssage()
-    {
-        if (disconnectMessage == false)
-        {
-            disconnectMessage = true;
-            PopupComponent.PopupShow<NoticePopup>(PopupPath.PopupNotice);
-        }
     }
 }
 

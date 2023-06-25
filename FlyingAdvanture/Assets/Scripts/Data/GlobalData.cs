@@ -314,6 +314,7 @@ public class GameStateData
     public enum GamePlayState
     {
         PLAY,
+        LOADING,
         WAITING
     }
 
@@ -335,8 +336,6 @@ public class GlobalData
     static EncryNumber unLockPage = new EncryNumber(2);
 
     static EncryString appVerison = new EncryString("1.0.0");
-
-    static private EncryBool isConnectNetWork = new EncryBool(false);
 
     static private EncryBool isGoogleLogin = new EncryBool(false);
 
@@ -406,12 +405,6 @@ public class GlobalData
     static public string AppVersion
     {
         get { return appVerison.value; }
-    }
-
-    static public bool IsConnectNetWork
-    {
-        get { return isConnectNetWork.value; }
-        set { isConnectNetWork.value = value; }
     }
 
     static public bool IsOpenRankingChallenge

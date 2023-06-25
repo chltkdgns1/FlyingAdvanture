@@ -2,24 +2,24 @@ using UnityEngine;
 
 public partial class LobbySceneManager
 {
-    #region °ÔÀÓ ½ºÅ×ÀÌÁö ÆË¾÷
+    #region ê²Œì„ ìŠ¤í…Œì´ì§€ íŒì—…
     [SerializeField]
     GameObject gameLevelPopup;
     SlidePopup slidePopup;
     GameStage gameStage;
     #endregion
 
-    #region ½ÃÀÛ ¹öÆ°
+    #region ì‹œì‘ ë²„íŠ¼
     [SerializeField]
     GameObject startBtn;
     #endregion
 
-    #region ¼¼ÆÃ ÆË¾÷
+    #region ì„¸íŒ… íŒì—…
     [SerializeField]
     GameObject settingBack;
     #endregion
 
-    #region ½ºÅä¾î ÆË¾÷
+    #region ìŠ¤í† ì–´ íŒì—…
     [SerializeField]
     StorePopup storePopup;
     #endregion

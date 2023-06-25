@@ -10,8 +10,8 @@ public partial class LobbySceneManager : MonoBehaviour
         if (instance == null) instance = this;
         else enabled = false;
 
-        //PlayingGameManager.gameState = GameState.LOBBY;
-       // PlayingGameManager.sceneState = SceneState.LOBBY;
+        GlobalData.gameState.gamePos = GameStateData.GamePos.LOBBYSCENE;
+        GlobalData.gameState.gamePlayeState = GameStateData.GamePlayState.WAITING;
     }
 
     private void Start()
@@ -22,7 +22,6 @@ public partial class LobbySceneManager : MonoBehaviour
     public void OnClickStartBtn()
     {
         SetPrintGameLevelPopup();
-        //SetResetStartBtn();
     }
 
     public void OnClickSetting()

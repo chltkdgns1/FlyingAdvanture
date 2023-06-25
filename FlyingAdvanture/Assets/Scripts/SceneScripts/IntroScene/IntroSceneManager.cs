@@ -22,8 +22,8 @@ public class IntroSceneManager : MonoBehaviour
     private void Awake()
     {
         touchFlag = false;
-        //PlayingGameManager.gameState = GameState.INTRO;
-        //PlayingGameManager.sceneState = SceneState.INTRO;
+        GlobalData.gameState.gamePos = GameStateData.GamePos.INTROSCENE;
+        GlobalData.gameState.gamePlayeState = GameStateData.GamePlayState.WAITING;
     }
 
     // Start is called before the first frame update
