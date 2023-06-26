@@ -55,7 +55,7 @@ public class PurchaseAnimManager : MonoBehaviour
             purchaseDic.Add(type, purchaseAnimData[i]);
         }
 
-        BackEndLogger.Log("PurchaseAnimManager", BackEndLogger.LogType.NOMAL, "Init ≥°");
+        BackEndLogger.Log("PurchaseAnimManager", BackEndLogger.LogType.NOMAL, "Init ÎÅù");
     }
 
     public IComplete StartAnimation(ProductTypes type)
@@ -66,8 +66,8 @@ public class PurchaseAnimManager : MonoBehaviour
             return null;
         }
 
-        LobbySceneManager.instance?.StorePopupProperty?.gameObject.SetActive(true);
-        LobbySceneManager.instance?.StorePopupProperty?.SetMenuProducts(type);
+        LobbyScene.instance?.UILobby?.StorePopupProperty?.gameObject.SetActive(true);
+        LobbyScene.instance?.UILobby?.StorePopupProperty?.SetMenuProducts(type);
 
         List<string> spritePath = UtilManager.ToList<string>(purchaseDic[type].spritePath);
         purchaseAnimation.SetSpritePath(spritePath);

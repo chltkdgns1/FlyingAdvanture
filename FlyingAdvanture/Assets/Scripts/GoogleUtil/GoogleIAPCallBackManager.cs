@@ -94,7 +94,7 @@ public class GoogleIAPCallBackManager
     static public void FinishPurchase(bool result = true)
     {
         //GoogleIAP.purchaseProductId = null;
-        LobbySceneManager.instance?.RefreshStorePopupMenu();
+        LobbyScene.instance.UILobby.RefreshStorePopupMenu();
 
         if (result == false)
         {

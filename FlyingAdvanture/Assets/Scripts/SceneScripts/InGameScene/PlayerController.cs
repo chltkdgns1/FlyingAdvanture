@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
             TouchScreen.Instance.AddDragUpEvent(OnDragUpEvent);
             KeyBoardManager.Instance.AddEvent(OnKeyBoardEvent);
 #else
-            TouchScreen.Instance.AddDragEvent(OnDragEvent); // 드레그
+            TouchScreen.Instance.AddDragDownEvent(OnDragDownEvent); // 드레그
             TouchScreen.Instance.AddDragUpEvent(OnDragUpEvent);
             RotateScreen.Instance.AddEvent(OnACEvent);    // 기울이기
 #endif

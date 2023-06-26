@@ -2,19 +2,12 @@ using UnityEngine;
 
 public class NetWorkManager : MonoSingleTon<NetWorkManager>
 {
-    public static NetWorkManager instance;
-
-    float disconnectTime;
-    float disconnectLimitTime = 3f;
-
-    bool disconnectMessage;
     bool IsDiconnect = false;
-
     public bool IsConnectNetWork = false;
 
     protected override void Init()
     {
-        ResetState();
+
     }
 
     void Update()
@@ -27,7 +20,6 @@ public class NetWorkManager : MonoSingleTon<NetWorkManager>
         }
         else
         {
-            ResetState();
             IsConnectNetWork = true;
             if (LoadingUI.Instance.isActive == true)
                 LoadingUI.Instance.isActive = false;
@@ -50,10 +42,6 @@ public class NetWorkManager : MonoSingleTon<NetWorkManager>
         UtilManager.Quit();
     }
 
-    void ResetState()
-    {
-        disconnectMessage = false;
-        disconnectTime = 0f;
-    }
+    public void OnStart() { }
 }
 

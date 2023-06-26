@@ -183,7 +183,7 @@ public class IntroSceneManager : MonoBehaviour
 
     public bool CheckConnectNetwork()
     {
-        if (GlobalData.IsConnectNetWork == false)
+        if (NetWorkManager.Instance.IsConnectNetWork == false)
         {
             ShowQuitPopup(StringList.OffLineNotice);
             return false;

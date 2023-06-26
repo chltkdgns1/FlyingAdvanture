@@ -282,7 +282,7 @@ public class GameStage : MonoBehaviour
 
     public void OnClickLevelBack()
     {
-        LobbySceneManager.instance?.ResetScreen();
+        LobbyScene.instance.UILobby?.ResetScreen();
     }
 
     public void OnClickNextLevel()

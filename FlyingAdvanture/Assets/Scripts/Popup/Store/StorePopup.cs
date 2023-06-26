@@ -192,11 +192,6 @@ public class StorePopup : PopupComponent
         tabManager.OnMenu(CacheIndex);
     }
 
-    public void OnClose()
-    {
-        gameObject.SetActive(false);
-    }
-
     public void SetClickProduct(int index)
     {
         if (index < 0 || languageTablesNotice.Length <= index)

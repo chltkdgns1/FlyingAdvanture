@@ -29,12 +29,6 @@ public class ApplicationManager : MonoSingleTon<ApplicationManager>
     {   
         Application.targetFrameRate = 140;
 
-        //#if UNITY_EDITOR
-        //        DefineSymbolManager.Clear();
-        //        DefineSymbolManager.AddSymbol("DEV");
-        //        DefineSymbolManager.SetSymbolSetting();
-        //#endif
-
         ConvertLanguage.SetLanguage();
 
         GoogleFirebaseManager.OnStatic();
@@ -42,6 +36,8 @@ public class ApplicationManager : MonoSingleTon<ApplicationManager>
         GoogleLogin.OnStatic();
         GlobalData.OnStatic();
         StringList.OnStatic();
+        NetWorkManager.Instance.OnStart();
+        TouchMotionManager.Instance.OnStart();
 
         ReadApplicationVersion();
     }
@@ -150,13 +146,7 @@ public class ApplicationManager : MonoSingleTon<ApplicationManager>
 
     private void Reset()
     {
-        //if (GlobalData.IsGoogleLogin == false)
-        //{
-        //    Debug.Log("Start LocalData Save");
-        //    GlobalDataConnector value = new GlobalDataConnector();
-        //    value.SetGlobalData();
-        //    PlayerPrefsManager.SaveAllLocalData();
-        //}
+
     }
 }
 

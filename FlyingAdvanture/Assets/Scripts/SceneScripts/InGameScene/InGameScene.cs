@@ -14,6 +14,15 @@ public class InGameScene : MonoBehaviour
     {
         gameLogic = GlobalData.gameLogicData;
         gameLogic.SetInGameScene(this);
+        PlayignGameManager.Instance.IsStop = true;
+
+        InitUI();
+        InitGame();
+    }
+
+    private void Start()
+    {
+        StartGame();
     }
 
     public void StartGame()
@@ -22,8 +31,7 @@ public class InGameScene : MonoBehaviour
         gameLogic.WaitGameStart(()=>
         {
             startWaitTxt.gameObject.SetActive(false);
-            InitUI();
-            InitGame();
+            PlayignGameManager.Instance.IsStop = false;
         });
     }
 

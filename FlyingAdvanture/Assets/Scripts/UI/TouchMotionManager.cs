@@ -2,9 +2,7 @@ using UnityEngine;
 
 public class TouchMotionManager : MonoSingleTon<TouchMotionManager>
 {
-    [SerializeField]
     GameObject touchMotionPrefabs;
-
     GameObject[] touchMotionPool;
 
     int poolIndex = 0;
@@ -14,7 +12,7 @@ public class TouchMotionManager : MonoSingleTon<TouchMotionManager>
 
     protected override void Init()
     {
-
+        touchMotionPrefabs = Resources.Load("Prefabs/UI/Touch") as GameObject;
     }
 
     private void Awake()
@@ -82,4 +80,6 @@ public class TouchMotionManager : MonoSingleTon<TouchMotionManager>
             touchMotionPool[i].SetActive(false);
         }
     }
+
+    public void OnStart() { }
 }

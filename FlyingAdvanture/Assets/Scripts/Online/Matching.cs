@@ -23,7 +23,6 @@ namespace CustomPhoton
                 return;
 
             // 게임 룸 진입
-
             LoadSceneManager.instance.LoadScene(StringList.InGameScene);
         }
 
@@ -40,7 +39,6 @@ namespace CustomPhoton
             int randNumber = UnityEngine.Random.Range(0, 100000);
             return PhotonNetwork.CreateRoom("Room_" + DateTime.Now.Ticks + "_" + randNumber, new Photon.Realtime.RoomOptions { MaxPlayers = maxNumber }, null);
         }
-
 
         public override void OnCreatedRoom()
         {

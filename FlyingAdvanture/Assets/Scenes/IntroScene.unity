@@ -988,9 +988,6 @@ GameObject:
   - component: {fileID: 2055041618}
   - component: {fileID: 2055041620}
   - component: {fileID: 2055041621}
-  - component: {fileID: 2055041623}
-  - component: {fileID: 2055041625}
-  - component: {fileID: 2055041626}
   m_Layer: 0
   m_Name: DontDestroyManager
   m_TagString: Untagged
@@ -1101,40 +1098,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b7154742d1eda04eb2c55b0f055a786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2055041623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2055041607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c53e06276ffe297448622ec01d918478, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2055041625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2055041607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea10f3006cb20d64191881be963145bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2055041626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2055041607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bf8a171f2eb6b74eb92d98259f1a7ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  touchMotionPrefabs: {fileID: 4266983942884565719, guid: fbedb1ed839be9f44a532e72bdcaa2a6, type: 3}
