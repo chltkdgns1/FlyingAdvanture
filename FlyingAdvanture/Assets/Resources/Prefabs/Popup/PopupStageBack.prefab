@@ -2590,7 +2590,7 @@ GameObject:
   - component: {fileID: 5495633394466001555}
   - component: {fileID: 5495633394466001580}
   m_Layer: 5
-  m_Name: Popup_StageBack
+  m_Name: PopupStageBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

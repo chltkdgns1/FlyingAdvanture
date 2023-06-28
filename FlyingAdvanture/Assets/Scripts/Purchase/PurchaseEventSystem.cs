@@ -5,10 +5,10 @@ using UnityEngine;
 //using UnityEngine.Purchasing;
 
 // 임시 클래스 삭제해야함.
-public class Product
-{
+//public class Product
+//{
 
-}
+//}
 
 public class PurchaseEvent
 {
@@ -24,160 +24,123 @@ public class PurchaseEvent
     }
 }
 
-public class PurchaseEventSystem : MonoBehaviour
+public class PurchaseEventSystem : MonoSingleTon<PurchaseEventSystem>
 {
-    public static PurchaseEventSystem instance = null;
-    static Queue<PurchaseEvent> eventQueue = new Queue<PurchaseEvent>();
+    //Queue<PurchaseEvent> eventQueue = new Queue<PurchaseEvent>();
+    //bool IsProcessState = false;
 
-    [Serializable]
-    class ProductData
+    protected override void Init()
     {
-        public GameObject productPrefabs;
-        public ProductTypes productType;
-        public GameObject productOb { get; set; }
-        public string productId { get; set; }
+        //eventQueue.Clear();
     }
 
-    [SerializeField]
-    ProductData[] productData;
+    //public void OnEnable()
+    //{
+    //    IsProcessState = false;
 
-    [SerializeField]
-    Transform purchasePopupTrans;
+    //    if (purchasePopupTrans == null)
+    //    {
+    //        BackEndLogger.Log("Error", BackEndLogger.LogType.ERROR, "PurchaseEventSystem OnEnable purchasePopupTrans == null");
+    //        return;
+    //    }
 
-    bool IsProcessState = false;
+    //    if (purchasePopupTrans.gameObject == null)
+    //    {
+    //        BackEndLogger.Log("Error", BackEndLogger.LogType.ERROR, "PurchaseEventSystem OnEnable purchasePopupTrans == null");
+    //        return;
+    //    }
 
-    public void Awake()
-    {
-        if (instance == null) instance = this;
-        else
-        {
-            enabled = false;
-            return;
-        }
+    //    purchasePopupTrans.gameObject.SetActive(false);
+    //    for (int i = 0; i < productData.Length; i++)
+    //    {
+    //        productData[i].productOb.SetActive(false);
+    //    }
+    //}
 
-        eventQueue.Clear();
+    //public void AddPurchaseEvent(PurchaseEvent evt)
+    //{
+    //    eventQueue.Enqueue(evt);
+    //}
 
-        if (productData == null)
-        {
-            BackEndLogger.Log("Error", BackEndLogger.LogType.ERROR, "PurchaseEventSystem Awake productData == null");
-            return;
-        }
+    //private void Update()
+    //{
+    //    if (eventQueue.Count == 0 || IsProcessState == true)
+    //    {
+    //        return;
+    //    }
 
-        for (int i = 0; i < productData.Length; i++)
-        {
-            productData[i].productOb = Instantiate(productData[i].productPrefabs, purchasePopupTrans);
-            productData[i].productOb.SetActive(false);
-            productData[i].productId = GoogleIAPProductConverter.ConvertTypeToId(productData[i].productType);
-        }
-    }
+    //    IsProcessState = true;
+    //    ExcutePurchaseEvent(eventQueue.Dequeue());
+    //}
 
-    public void OnEnable()
-    {
-        IsProcessState = false;
+    //void PrintIndex(int index)
+    //{
+    //    if (index < 0 || index >= productData.Length)
+    //    {
+    //        Debug.LogError("PrintIndex 인덱스 에러 " + productData.Length + " : " + index);
+    //        return;
+    //    }
 
-        if (purchasePopupTrans == null)
-        {
-            BackEndLogger.Log("Error", BackEndLogger.LogType.ERROR, "PurchaseEventSystem OnEnable purchasePopupTrans == null");
-            return;
-        }
+    //    for (int i = 0; i < productData.Length; i++)
+    //    {
+    //        productData[i].productOb.SetActive(false);
+    //    }
 
-        if (purchasePopupTrans.gameObject == null)
-        {
-            BackEndLogger.Log("Error", BackEndLogger.LogType.ERROR, "PurchaseEventSystem OnEnable purchasePopupTrans == null");
-            return;
-        }
+    //    productData[index].productOb.SetActive(true);
+    //}
 
-        purchasePopupTrans.gameObject.SetActive(false);
-        for (int i = 0; i < productData.Length; i++)
-        {
-            productData[i].productOb.SetActive(false);
-        }
-    }
+    //void ExcutePurchaseEvent(PurchaseEvent evt)
+    //{
+    //    purchasePopupTrans.gameObject.SetActive(true);
+    //    for (int i = 0; i < productData.Length; i++)
+    //    {
+    //        //if (productData[i].productId == evt.product.definition.id)
+    //        //{
+    //        //    Debug.LogWarning("미결제 상품 결제 시작");
+    //        //    PrintIndex(i);
+    //        //    evt.complete += FinishProcessstate;
+    //        //    //evt.act(evt.product, evt.complete);
+    //        //    StartCoroutine(WaitAction(evt));
+    //        //    return;
+    //        //}
+    //    }
 
-    static public void AddPurchaseEvent(PurchaseEvent evt)
-    {
-        eventQueue.Enqueue(evt);
-    }
+    //    //Debug.LogError(evt.product.definition.id + " 제품 등록되지 않은 아이디");
+    //    // 미결제된 안내 상품을 출력함..
+    //}
 
-    private void Update()
-    {
-        if (eventQueue.Count == 0 || IsProcessState == true)
-        {
-            return;
-        }
+    //IEnumerator WaitAction(PurchaseEvent evt)
+    //{
+    //    yield return new WaitForSeconds(3f);
+    //    evt.act(evt.product, evt.complete);
+    //}
 
-        IsProcessState = true;
-        ExcutePurchaseEvent(eventQueue.Dequeue());
-    }
+    //public void SetProcessState(bool state)
+    //{
+    //    IsProcessState = state;
+    //}
 
-    void PrintIndex(int index)
-    {
-        if (index < 0 || index >= productData.Length)
-        {
-            Debug.LogError("PrintIndex 인덱스 에러 " + productData.Length + " : " + index);
-            return;
-        }
+    //public void FinishProcessstate(bool isSuccess) // 타입을 맞춰주기 위한 변수임..
+    //{
+    //    // 미결제 상품 프로세스 종료
 
-        for (int i = 0; i < productData.Length; i++)
-        {
-            productData[i].productOb.SetActive(false);
-        }
+    //    Debug.LogWarning("미결제 상품 프로세스 종료");
 
-        productData[index].productOb.SetActive(true);
-    }
-
-    void ExcutePurchaseEvent(PurchaseEvent evt)
-    {
-        purchasePopupTrans.gameObject.SetActive(true);
-        for (int i = 0; i < productData.Length; i++)
-        {
-            //if (productData[i].productId == evt.product.definition.id)
-            //{
-            //    Debug.LogWarning("미결제 상품 결제 시작");
-            //    PrintIndex(i);
-            //    evt.complete += FinishProcessstate;
-            //    //evt.act(evt.product, evt.complete);
-            //    StartCoroutine(WaitAction(evt));
-            //    return;
-            //}
-        }
-
-        //Debug.LogError(evt.product.definition.id + " 제품 등록되지 않은 아이디");
-        // 미결제된 안내 상품을 출력함..
-    }
-
-    IEnumerator WaitAction(PurchaseEvent evt)
-    {
-        yield return new WaitForSeconds(3f);
-        evt.act(evt.product, evt.complete);
-    }
-
-    public void SetProcessState(bool state)
-    {
-        IsProcessState = state;
-    }
-
-    public void FinishProcessstate(bool isSuccess) // 타입을 맞춰주기 위한 변수임..
-    {
-        // 미결제 상품 프로세스 종료
-
-        Debug.LogWarning("미결제 상품 프로세스 종료");
-
-        if (isSuccess == false)
-        {
-            ThreadEvent.AddThreadEvent(() =>
-            {
-                IsProcessState = false;
-                purchasePopupTrans.gameObject.SetActive(false);
-            });
-        }
-        else
-        {
-            ThreadEvent.AddThreadEvent(() =>
-            {
-                IsProcessState = false;
-                purchasePopupTrans.gameObject.SetActive(false);
-            });
-        }
-    }
+    //    if (isSuccess == false)
+    //    {
+    //        ThreadEvent.Instance.AddThreadEvent(() =>
+    //        {
+    //            IsProcessState = false;
+    //            //purchasePopupTrans.gameObject.SetActive(false);
+    //        });
+    //    }
+    //    else
+    //    {
+    //        ThreadEvent.Instance.AddThreadEvent(() =>
+    //        {
+    //            IsProcessState = false;
+    //            //purchasePopupTrans.gameObject.SetActive(false);
+    //        });
+    //    }
+    //}
 }

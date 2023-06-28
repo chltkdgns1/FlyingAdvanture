@@ -23,7 +23,7 @@ namespace CustomPhoton
                 return;
 
             // 게임 룸 진입
-            LoadSceneManager.instance.LoadScene(StringList.InGameScene);
+            LoadSceneManager.Instance.LoadScene(StringList.InGameScene);
         }
 
         public override void OnJoinRoomFailed(short returnCode, string message)
@@ -45,7 +45,7 @@ namespace CustomPhoton
             if (ConnectPhoton.Instance.IsConnectPhoton() == false)
                 return;
 
-            LoadSceneManager.instance.LoadScene(StringList.InGameScene);
+            LoadSceneManager.Instance.LoadScene(StringList.InGameScene);
         }
 
         public override void OnCreateRoomFailed(short returnCode, string message)

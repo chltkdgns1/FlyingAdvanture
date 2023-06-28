@@ -13,10 +13,6 @@ public class TouchMotionManager : MonoSingleTon<TouchMotionManager>
     protected override void Init()
     {
         touchMotionPrefabs = Resources.Load("Prefabs/UI/Touch") as GameObject;
-    }
-
-    private void Awake()
-    {
         CreateObjectPool();
     }
 
@@ -67,9 +63,6 @@ public class TouchMotionManager : MonoSingleTon<TouchMotionManager>
             Debug.LogError("Canvas does not found");
             return;
         }
-
-        if (touchMotionPool.Length > 0)
-            return;
 
         if (touchMotionPool == null)
             touchMotionPool = new GameObject[poolSize];

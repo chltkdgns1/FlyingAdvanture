@@ -12,9 +12,6 @@ public class IntroSceneManager : MonoBehaviour
     [SerializeField]
     Image startImg;
 
-    [SerializeField]
-    GameObject loadingOb;
-
     Vector3[] vecArr;
 
     bool touchFlag = false;
@@ -24,6 +21,8 @@ public class IntroSceneManager : MonoBehaviour
         touchFlag = false;
         GlobalData.gameState.gamePos = GameStateData.GamePos.INTROSCENE;
         GlobalData.gameState.gamePlayeState = GameStateData.GamePlayState.WAITING;
+
+        ApplicationManager.Instance.OnStart();
     }
 
     // Start is called before the first frame update
@@ -129,6 +128,8 @@ public class IntroSceneManager : MonoBehaviour
     {
         startImg.gameObject.SetActive(true);
         startImg.DOColor(new Color(1f, 1f, 1f, 1f), 1f);
+
+        UIEffectManager.BounceEffect(startImg.gameObject, 1.02f, 0.98f, 0.25f, (int)EffectAttribute.INFINITE);
     }
 
     public void OnClickStart()
@@ -139,7 +140,7 @@ public class IntroSceneManager : MonoBehaviour
         UIEffectManager.TouchSizeUpErase(startImg.gameObject, 1.1f, 1f).OnComplete(() =>
         {
             startImg.gameObject.SetActive(false);
-            loadingOb.SetActive(true);
+            LoadingUI.Instance.isActive = true;
          
             if(CheckConnectNetwork() == false)
                 return;
@@ -152,14 +153,14 @@ public class IntroSceneManager : MonoBehaviour
                     if (result == true)
                     {
                         Debug.Log("로그인 성공");
-                        ThreadEvent.AddThreadEvent(() =>
+                        ThreadEvent.Instance.AddThreadEvent(() =>
                         {
                             BackEndLogger.Log("IntroSceneManager", BackEndLogger.LogType.NOMAL, "로비씬으로 이동");
 
                             GlobalData.IsGoogleLogin = true;
                             Debug.Log("Start Login Call Back");
-                            loadingOb.SetActive(false);
-                            LoadSceneManager.instance.LoadScene(StringList.LobbyScene);
+                            LoadingUI.Instance.isActive = false;
+                            LoadSceneManager.Instance.LoadScene(StringList.LobbyScene);
                             //SceneManager.LoadScene(StringList.LobbyScene);
                         });
                     }
@@ -194,8 +195,8 @@ public class IntroSceneManager : MonoBehaviour
     void ShowQuitPopup(string message)
     {
         Debug.Log("Start ShowQuitPopup");
-        
-        ThreadEvent.AddThreadEvent(() =>
+
+        ThreadEvent.Instance.AddThreadEvent(() =>
         {
             var popup = PopupComponent.PopupShow<NoticePopup>(PopupPath.PopupNotice);
             popup.SetOkAct(UtilManager.Quit);

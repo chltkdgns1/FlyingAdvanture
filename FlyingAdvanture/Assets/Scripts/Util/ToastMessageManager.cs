@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ToastMessageManager : MonoBehaviour
+public class ToastMessageManager : MonoSingleTon<ToastMessageManager>
 {
     struct Element
     {
@@ -16,21 +16,17 @@ public class ToastMessageManager : MonoBehaviour
             this.fTime = fTime;
         }
     }
-    public static ToastMessageManager instance;
 
-    [SerializeField]
     GameObject _toastObject;
-
     GameObject _toastRealObject;
     private Text messageTxt;
 
     private Queue<Element> messageQueue = new Queue<Element>();
     private bool _toastState;
 
-    private void Awake()
+    protected override void Init()
     {
-        if (instance == null) instance = this;
-        else enabled = false;
+        _toastObject = Resources.Load("Prefabs/UI/ToastMessage") as GameObject;
     }
 
     // Start is called before the first frame update

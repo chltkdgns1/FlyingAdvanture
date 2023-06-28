@@ -40,12 +40,12 @@ public class SettingPopup : PopupComponent
     {
         if (GlobalData.IsGoogleLogin == false)
         {
-            ToastMessageManager.instance.StartToastMessage("게스트 로그인 계정은 로그아웃 할 수 없습니다.", 2f);
+            ToastMessageManager.Instance.StartToastMessage("게스트 로그인 계정은 로그아웃 할 수 없습니다.", 2f);
             return;
         }
 
         GoogleLogin.OnLogout();
-        LoadSceneManager.instance.LoadScene(StringList.IntroScene);
+        LoadSceneManager.Instance.LoadScene(StringList.IntroScene);
     }
 
     public void OnErase()

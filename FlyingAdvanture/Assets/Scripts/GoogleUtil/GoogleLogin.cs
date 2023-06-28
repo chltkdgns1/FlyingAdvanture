@@ -85,7 +85,7 @@ public class GoogleLogin
                                 else
                                 {
                                     Debug.LogWarning("Start LobbyScene");
-                                    ThreadEvent.AddThreadEvent(success);
+                                    ThreadEvent.Instance.AddThreadEvent(success);
                                 }
                             });
                         });
@@ -161,7 +161,7 @@ public class GoogleLogin
                            else
                            {
                                Debug.LogWarning("Start LobbyScene");
-                               ThreadEvent.AddThreadEvent(success);
+                               ThreadEvent.Instance.AddThreadEvent(success);
                            }
                        });
                     });
@@ -173,8 +173,8 @@ public class GoogleLogin
     static public void OnOffLineLogin(string str, float duration, Action act)
     {
         Debug.LogWarning(str);
-        ToastMessageManager.instance.StartToastMessage(str, duration);
-        ThreadEvent.AddThreadEvent(act);
+        ToastMessageManager.Instance.StartToastMessage(str, duration);
+        ThreadEvent.Instance.AddThreadEvent(act);
     }
 
     public static void OnLogout()

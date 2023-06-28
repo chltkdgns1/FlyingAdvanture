@@ -19,7 +19,7 @@ public class GoogleFirebaseManager
 
     static GoogleFirebaseManager instance = new GoogleFirebaseManager();
 
-    GoogleFirebaseManager()
+    public GoogleFirebaseManager()
     {
         FirebaseDatabase.DefaultInstance.SetPersistenceEnabled(false);
         databaseRef = FirebaseDatabase.DefaultInstance.RootReference;
@@ -27,10 +27,7 @@ public class GoogleFirebaseManager
         //databaseRef.KeepSynced(true);
     }
 
-    static public void OnStatic()
-    {
-
-    }
+    static public void OnStatic() { }
 
     static public async Task WriteSignUpData(string uid, string jsonValue)
     {
@@ -337,6 +334,42 @@ public class GoogleFirebaseManager
     {
         Debug.LogWarning("Start DeleteSignupUserData");
         return databaseRef.Child(StringList.FirebaseSignUpUsers).Child(uid).RemoveValueAsync();
+    }
+
+    static public Task ReadProductData(Action<QueryAns, object> act)
+    {
+        Debug.LogWarning("Start ReadProductData");
+
+        return databaseRef.Child(StringList.FirebaseProduct).GetValueAsync().ContinueWith(task =>
+        {
+            Debug.LogWarning("Start CallBack ReadProductData");
+
+            if (task.IsFaulted)
+            {
+                Debug.LogWarning("ReadProductData failed");
+                act?.Invoke(QueryAns.FAILED, null);
+                return;
+            }
+            else if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result;
+
+                if (snapshot == null)
+                {
+                    Debug.LogWarning("read null in ReadProductData");
+                    act?.Invoke(QueryAns.RESULT_NULL, null);
+                    return;
+                }
+                else if (snapshot.Exists == false)
+                {
+                    Debug.LogWarning("read not Exists in ReadProductData");
+                    act?.Invoke(QueryAns.NOT_EXITST_DATA, null);
+                    return;
+                }
+
+                act?.Invoke(QueryAns.SUCCESS, snapshot);
+            }
+        });
     }
 }
 

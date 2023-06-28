@@ -2,27 +2,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadSceneManager : MonoBehaviour
+public class LoadSceneManager : MonoSingleTon<LoadSceneManager>
 {
-    static public LoadSceneManager instance;
-
-    private void Awake()
-    {
-        if (instance == null) instance = this;
-        else enabled = false;
-    }
-
-    private void Start()
-    {
-
-    }
-
-    [SerializeField]
-    GameObject loadingBackPrefabs;
-
-    GameObject loadingBack;
-
     bool loading = false;
+    protected override void Init()
+    {
+
+    }
 
     public void LoadScene(string sceneName)
     {
@@ -30,24 +16,9 @@ public class LoadSceneManager : MonoBehaviour
         if (loading) return;
 
         loading = true;
-        if (loadingBack == null)
-        {
-            CreateLoadingBack();
-        }
-
+        LoadingUI.Instance.isActive = true;
         Debug.Log("Ready Start LoadScene");
-
-        loadingBack.SetActive(true);
         StartCoroutine(LoadingScene(sceneName));
-    }
-
-    void CreateLoadingBack()
-    {
-        GameObject canvasObject = GameObject.Find("Canvas");
-        if (canvasObject == null) return;
-
-        loadingBack = Instantiate(loadingBackPrefabs, canvasObject.transform);
-        loadingBack.SetActive(true);
     }
 
     IEnumerator LoadingScene(string sceneName)
@@ -60,5 +31,6 @@ public class LoadSceneManager : MonoBehaviour
             yield return null;          
         }
         loading = false;
+        LoadingUI.Instance.isActive = false;
     }
 }

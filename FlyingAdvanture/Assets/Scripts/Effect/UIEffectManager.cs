@@ -37,26 +37,20 @@ public static class UIEffectManager
 
     static public Tween BounceEffect(GameObject ob, float upScale, float downScale, float duration, int loops = -404)
     {
-        Transform[] allChildren = ob.GetComponentsInChildren<Transform>();
-
         Tween tween = null;
-
-        foreach (Transform child in allChildren)
+        if (loops != -404)
         {
-            if (loops != -404)
-            {
-                DOTween.Sequence().
-                    Append(child.DOScale(upScale, duration)).
-                    Append(child.DOScale(downScale, duration)).
-                    SetLoops(loops);
-            }
-            else
-            {
-                tween = DOTween.Sequence().
-                    Append(child.DOScale(upScale, duration)).
-                    Append(child.DOScale(downScale, duration));
-            }
+            DOTween.Sequence().
+                Append(ob.transform.DOScale(upScale, duration)).
+                Append(ob.transform.DOScale(downScale, duration)).
+                SetLoops(loops);
         }
+        else
+        {
+            tween = DOTween.Sequence().
+                Append(ob.transform.DOScale(upScale, duration)).
+                Append(ob.transform.DOScale(downScale, duration));
+        }  
         return tween;
     }
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PopupComponent : BackKeyHandler
 {
@@ -9,7 +10,7 @@ public class PopupComponent : BackKeyHandler
 
     #region 팝업 스택 static
     static Dictionary<string, GameObject> popupCache = new Dictionary<string, GameObject>();
-    static Dictionary<Type, PopupComponent> popupDic = new Dictionary<Type, PopupComponent>();
+    static Dictionary<string, PopupComponent> popupDic = new Dictionary<string, PopupComponent>();
     static GameObject canvasObject = null;
     #endregion
 
@@ -19,7 +20,7 @@ public class PopupComponent : BackKeyHandler
         return SetPopup<T>(popupPath);
     }
 
-    static public T PopupShow<T>(string popupPath, string title, string content) where T : PopupComponent
+    static public T PopupShow<T>(string popupPath, string title, string content, bool isTweenMove = false) where T : PopupComponent
     {
         SetPopupString(title, content);
         return SetPopup<T>(popupPath);
@@ -30,27 +31,36 @@ public class PopupComponent : BackKeyHandler
 
     }
 
+    public void TweenMoveUpPopup(float yPos = -100, float duration = 1f, bool isBack = false, Action act = null)
+    {
+        UIEffectManager.PrintPopup(gameObject, transform.position + new Vector3(0, yPos, 0),
+            transform.position, 1f, isBack).OnComplete(() =>
+            {
+                act?.Invoke();
+            });
+    }
+
+    static bool CheckExistPopup<T>(T popup) where T : PopupComponent
+    {
+        return isExistPopup<T>(popup);
+    }
+
     static T SetPopup<T>(string popupPath) where T : PopupComponent
     {
         if (canvasObject == null)
         {
             canvasObject = GameObject.Find("Canvas");
         }
-        List<string> splitList = new List<string>();
-        UtilManager.Split(splitList, popupPath, '/');
-
-        string popupName = splitList[splitList.Count - 1];
 
         GameObject popupPrefabs = null;
-
-        if (popupCache.ContainsKey(popupName))
+        if (popupCache.ContainsKey(popupPath))
         {
-            popupPrefabs = popupCache[popupName];
+            popupPrefabs = popupCache[popupPath];
         }
         else
         {
             popupPrefabs = Resources.Load<GameObject>(popupPath);
-            popupCache.Add(popupName, popupPrefabs);
+            popupCache.Add(popupPath, popupPrefabs);
         }
 
         var popup = Instantiate(popupPrefabs, canvasObject.transform).transform;
@@ -62,19 +72,20 @@ public class PopupComponent : BackKeyHandler
 
     static void AddPopup<T>(T popup) where T : PopupComponent
     {
-        T checkPopup = isExistPopup<T>();
+        T checkPopup = isExistPopup<T>(popup);
         if (checkPopup != null)
             checkPopup.OnClose();
 
-        popupDic[typeof(T)] = popup;
+        string key = GetPopupKey<T>(popup);
+        popupDic[key] = popup;
         popup.transform.SetAsLastSibling();
     }
 
-    static T isExistPopup<T>() where T : PopupComponent
+    static T isExistPopup<T>(T popup) where T : PopupComponent
     {
-        var type = typeof(T);
-        if (popupDic.ContainsKey(type))
-            return popupDic[type] as T;
+        string key = typeof(T).Name + popup.gameObject.name;
+        if (popupDic.ContainsKey(key))
+            return popupDic[key] as T;
         return null;
     }
 
@@ -82,13 +93,19 @@ public class PopupComponent : BackKeyHandler
     {
         closeCallBack?.Invoke();
         Type type = GetType();
-        popupDic.Remove(type);
+        string key = type.Name + gameObject.name;
+        popupDic.Remove(key);
         base.OnClose();
     }
 
     static public bool IsEmpty()
     {
         return popupDic.Count == 0;
+    }
+
+    static public string GetPopupKey<T>(T popup) where T : PopupComponent
+    {
+        return typeof(T).Name + popup.name;
     }
     #endregion
 }

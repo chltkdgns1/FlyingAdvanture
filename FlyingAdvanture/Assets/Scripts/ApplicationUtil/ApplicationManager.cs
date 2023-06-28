@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class ApplicationManager : MonoSingleTon<ApplicationManager>
 {
-    public bool UseTestGoogleLogin;
+#if !REAL
+    public bool UseTestGoogleLogin = true;
+#endif
 
     public enum VersionCheck
     {
@@ -36,8 +38,11 @@ public class ApplicationManager : MonoSingleTon<ApplicationManager>
         GoogleLogin.OnStatic();
         GlobalData.OnStatic();
         StringList.OnStatic();
+        ProductManager.OnStatic();
         NetWorkManager.Instance.OnStart();
         TouchMotionManager.Instance.OnStart();
+        ThreadEvent.Instance.OnStart();
+        AtlasManager.Instance.OnStart();
 
         ReadApplicationVersion();
     }
@@ -77,7 +82,7 @@ public class ApplicationManager : MonoSingleTon<ApplicationManager>
                             else
                             {
                                 Debug.LogWarning("openURL : " + strUrl);
-                                ThreadEvent.AddThreadEventParam((url) =>
+                                ThreadEvent.Instance.AddThreadEventParam((url) =>
                                 {
                                     var popup = PopupComponent.PopupShow<NoticePopup>(PopupPath.PopupNotice);
                                     popup.SetOkAct(() =>
@@ -144,7 +149,7 @@ public class ApplicationManager : MonoSingleTon<ApplicationManager>
         return VersionCheck.SAME;
     }
 
-    private void Reset()
+    public void OnStart()
     {
 
     }

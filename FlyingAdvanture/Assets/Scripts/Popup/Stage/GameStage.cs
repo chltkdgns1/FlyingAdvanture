@@ -101,7 +101,7 @@ public class GameStage : MonoBehaviour
                     return;
 
                 //PlayingGameManager.gameLevel = index + 1;
-                LoadSceneManager.instance.LoadScene(StringList.InGameScene);
+                LoadSceneManager.Instance.LoadScene(StringList.InGameScene);
 
                 //WaitLoadingManager.instance.StartWaitLoading(2f, () =>
                 //{

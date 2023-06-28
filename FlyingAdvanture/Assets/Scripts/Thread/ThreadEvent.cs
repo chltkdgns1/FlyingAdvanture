@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThreadEvent : MonoBehaviour
+public class ThreadEvent : MonoSingleTon<ThreadEvent>
 {
     public delegate void EventParam(params object[] ob);
 
@@ -18,11 +18,13 @@ public class ThreadEvent : MonoBehaviour
         }
     }
 
-    static Queue<Action> evtQueue = new Queue<Action>();
-    static Queue<EventParamData> evtParamQueue = new Queue<EventParamData>();
+    Queue<Action> evtQueue = new Queue<Action>();
+    Queue<EventParamData> evtParamQueue = new Queue<EventParamData>();
 
-    static object evtQueueLock = new object();
-    static object evtParamQueueLock = new object();
+    object evtQueueLock = new object();
+    object evtParamQueueLock = new object();
+
+    protected override void Init() { }
 
     void Update()
     {
@@ -56,7 +58,7 @@ public class ThreadEvent : MonoBehaviour
         actTemp.evt?.Invoke(actTemp.param);
     }
 
-    public static void AddThreadEvent(Action act)
+    public void AddThreadEvent(Action act)
     {
         lock (evtQueueLock)
         {
@@ -64,11 +66,13 @@ public class ThreadEvent : MonoBehaviour
         }
     }
 
-    public static void AddThreadEventParam(EventParam evt, params object[] ob)
+    public void AddThreadEventParam(EventParam evt, params object[] ob)
     {
         lock (evtParamQueueLock)
         {
             evtParamQueue.Enqueue(new EventParamData(evt, ob));
         }
     }
+
+    public void OnStart() { }
 }

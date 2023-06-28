@@ -10,14 +10,15 @@ public static class StringList
     public const string GameComplete_TwoStar = "EXCELLENT";
     public const string GameComplete_ThreeStar = "AWESOME";
 
-    public const string LoginSuccess = "·Î±×ÀÎ µÇ¾ú½À´Ï´Ù.";
-    public const string LoginFailed = "·Î±×ÀÎ ½ÇÆĞÇÏ¿´½À´Ï´Ù.";
-    public const string ExitMessage = "·Î±×ÀÎ ½ÇÆĞ·Î Á¾·áµË´Ï´Ù.";
-    public const string NetworkExitMessage = "³×Æ®¿öÅ© »óÅÂ°¡ ÁÁÁö ¾Ê¾Æ ·Î±×ÀÎ ½ÇÆĞ·Î Á¾·áµË´Ï´Ù.";
-    public const string DBDataErrorExit = "À¯Àú Á¤º¸°¡ ¿Ã¹Ù¸£Áö ¾Ê¾Æ Á¾·áµË´Ï´Ù.";
-    public const string GuestLogin = "°Ô½ºÆ® ·Î±×ÀÎ ÁøÇàµË´Ï´Ù.";
-    public const string DisableLogout = "·Î±×¾Æ¿ôÀÌ ºÒ°¡´ÉÇÕ´Ï´Ù.";
+    public const string LoginSuccess = "ë¡œê·¸ì¸ ë˜ì—ˆìŠµë‹ˆë‹¤.";
+    public const string LoginFailed = "ë¡œê·¸ì¸ ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.";
+    public const string ExitMessage = "ë¡œê·¸ì¸ ì‹¤íŒ¨ë¡œ ì¢…ë£Œë©ë‹ˆë‹¤.";
+    public const string NetworkExitMessage = "ë„¤íŠ¸ì›Œí¬ ìƒíƒœê°€ ì¢‹ì§€ ì•Šì•„ ë¡œê·¸ì¸ ì‹¤íŒ¨ë¡œ ì¢…ë£Œë©ë‹ˆë‹¤.";
+    public const string DBDataErrorExit = "ìœ ì € ì •ë³´ê°€ ì˜¬ë°”ë¥´ì§€ ì•Šì•„ ì¢…ë£Œë©ë‹ˆë‹¤.";
+    public const string GuestLogin = "ê²ŒìŠ¤íŠ¸ ë¡œê·¸ì¸ ì§„í–‰ë©ë‹ˆë‹¤.";
+    public const string DisableLogout = "ë¡œê·¸ì•„ì›ƒì´ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.";
 
+    public const string FirebaseProduct = "product";
     public const string FirebaseUsers = "users";
     public const string FirebaseSignUpUsers = "signUpUsers";
     public const string FirebaseCoin = "coin";
@@ -78,10 +79,10 @@ public static class StringList
 
     public const string PurchaseDeleteAdsKeyPrice = "10000";
 
-    // Animation ½ºÇÁ¶óÀÌÆ® °æ·Î
+    // Animation ìŠ¤í”„ë¼ì´íŠ¸ ê²½ë¡œ
 
 
-    // ¿Àµğ¿À °æ·Î
+    // ì˜¤ë””ì˜¤ ê²½ë¡œ
 
     public const string AudioCancle = "Audio/Cancle";
     public const string AudioClick = "Audio/Click";
