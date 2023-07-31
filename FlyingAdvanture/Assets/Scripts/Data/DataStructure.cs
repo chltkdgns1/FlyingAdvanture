@@ -13,6 +13,7 @@ public enum ProductTypes
     NonGoolgeProduct_DeleteAds, // 해당 enum type 은 제일 하단에 위치함. 구글 상품이 아님
 }
 
+
 public enum MoneyType
 {
     MONEY,
@@ -29,4 +30,5 @@ public class ProductData
     public ProductTypes productType;
     public MoneyType moneyType;
     public bool isLock = false;
+    public int productResultType;
 }

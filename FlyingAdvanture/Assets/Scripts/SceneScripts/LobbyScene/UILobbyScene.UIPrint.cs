@@ -3,39 +3,6 @@ using UnityEngine.UI;
 
 public partial class UILobbyScene
 {
-    public void SetPrintGameLevelPopup()
-    {
-        if (gameStage == null)
-        {
-            BackEndLogger.Log("Error", BackEndLogger.LogType.ERROR, "SetPrintGameLevelPopup gameStage == null");
-            return;
-        }
-
-        if (slidePopup == null)
-        {
-            BackEndLogger.Log("Error", BackEndLogger.LogType.ERROR, "SetPrintGameLevelPopup slidePopup == null");
-            return;
-        }
-
-        gameStage.gameObject.SetActive(true);
-        gameStage.SetStage();
-        gameStage.SetStageTxt();
-        gameStage.EnableCenterOb();
-        slidePopup.MoveInSide(gameStage.EnableOb);
-    }
-
-    public void SetEraseGameLevelPopup()
-    {
-        if (slidePopup == null)
-        {
-            BackEndLogger.Log("Error", BackEndLogger.LogType.ERROR, "SetEraseGameLevelPopup slidePopup == null");
-            return;
-        }
-
-        slidePopup.MoveOutSide();
-        gameStage.DisableOb();
-    }
-
     public void SetResetStartBtn()
     {
         if (startBtn == null)
@@ -75,57 +42,7 @@ public partial class UILobbyScene
 
         startBtn.SetActive(false);
     }
-
-    public void SetPrintSettingBack()
-    {
-        if (settingBack == null)
-        {
-            BackEndLogger.Log("Error", BackEndLogger.LogType.ERROR, "SetPrintSettingBack startBtn == null");
-            return;
-        }
-
-        settingBack.SetActive(true);
-    }
-
-    public void SetEraseSettingBack()
-    {
-        if (settingBack == null)
-        {
-            BackEndLogger.Log("Error", BackEndLogger.LogType.ERROR, "SetEraseSettingBack settingBack == null");
-            return;
-        }
-
-        settingBack.SetActive(false);
-    }
-
-    public void SetPrintStorePopup()
-    {
-        if (storePopup == null)
-        {
-            BackEndLogger.Log("Error", BackEndLogger.LogType.ERROR, "SetPrintStorePopup storePopup == null");
-            return;
-        }
-
-        storePopup.gameObject.SetActive(true);
-    }
-
-    public void SetEraseStorePopup()
-    {
-        if (storePopup == null)
-        {
-            BackEndLogger.Log("Error", BackEndLogger.LogType.ERROR, "SetEraseStorePopup storePopup == null");
-            return;
-        }
-
-        if (storePopup.gameObject == null)
-        {
-            BackEndLogger.Log("Error", BackEndLogger.LogType.ERROR, "SetEraseStorePopup storePopup.gameObject == null");
-            return;
-        }
-
-        storePopup.gameObject.SetActive(false);
-    }
-
+ 
     public void SetPrintMatchPopupReady()
     {
         if (GlobalData.IsOpenRankingChallenge)

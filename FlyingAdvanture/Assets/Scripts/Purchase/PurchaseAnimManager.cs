@@ -66,9 +66,6 @@ public class PurchaseAnimManager : MonoBehaviour
             return null;
         }
 
-        LobbyScene.instance?.UILobby?.StorePopupProperty?.gameObject.SetActive(true);
-        LobbyScene.instance?.UILobby?.StorePopupProperty?.SetMenuProducts(type);
-
         List<string> spritePath = UtilManager.ToList<string>(purchaseDic[type].spritePath);
         purchaseAnimation.SetSpritePath(spritePath);
         //purchaseAnimation.transform.SetAsLastSibling();

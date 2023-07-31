@@ -16,22 +16,11 @@ public partial class UILobbyScene : MonoBehaviour
 
     public void OnClickStartBtn()
     {
-        SetPrintGameLevelPopup();
+        //SetPrintGameLevelPopup();
     }
 
     public void OnClickSetting()
     {
-        SetPrintSettingBack();
-    }
-
-    public void RefreshStorePopupMenu()
-    {
-        if(storePopup == null)
-        {
-            Debug.LogError("storePopup is null");
-            return;
-        }
-
-        storePopup.RefreshMenuProducts();
+        //SetPrintSettingBack();
     }
 }

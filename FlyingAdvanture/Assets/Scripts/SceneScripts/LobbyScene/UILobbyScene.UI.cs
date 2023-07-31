@@ -14,7 +14,7 @@ public partial class UILobbyScene
 
     public void ResetScreen()
     {
-        SetEraseGameLevelPopup();
+        //SetEraseGameLevelPopup();
         SetResetStartBtn();
     }
 }

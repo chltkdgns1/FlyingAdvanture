@@ -17,6 +17,19 @@ public class ProductManager
         UpdateProductData();
     }
 
+    public static List<ProductData> GetAllProduct()
+    {
+        List<ProductData> pList = new List<ProductData>();
+        foreach(var productMenu in productDic)
+        {
+            foreach(var product in productMenu.Value)
+            {
+                pList.Add(product);
+            }
+        }
+        return pList;
+    }
+
     static public void OnStatic() { }
 
     async void UpdateProductData()
@@ -80,6 +93,7 @@ public class ProductManager
                     string productType = infoDic["ProductType"]?.ToString();
                     string moneyType = infoDic["MoneyType"]?.ToString();
                     string money = infoDic["Money"]?.ToString();
+                    string resultType = infoDic["resultType"]?.ToString();
 
                     ProductData product = new ProductData();
                     product.productId = id;
@@ -90,6 +104,7 @@ public class ProductManager
                     product.productType = (ProductTypes)int.Parse(productType);
                     product.moneyType = (MoneyType)int.Parse(moneyType);
                     product.money = long.Parse(money);
+                    product.productResultType = int.Parse(resultType);
                     productDic[menuName].Add(product);
                 }
                 catch(Exception e)
@@ -99,5 +114,56 @@ public class ProductManager
                 }
             }            
         }
+    }
+
+    public static void PurchaseProductComplete(string id, bool isResult)
+    {
+        if(isResult == false)
+        {
+            return;
+        }
+
+        var product = GetProductData(id);
+
+        if(product == null)
+        {
+            return;
+        }
+
+        switch (product.productResultType)
+        {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+        }
+    }
+
+    public static bool IsRegisterProduct(string id)
+    {
+        foreach (var productMenu in productDic)
+        {
+            foreach (var product in productMenu.Value)
+            {
+                if (product.productId == id)
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    public static ProductData GetProductData(string id)
+    {
+        foreach (var productMenu in productDic)
+        {
+            foreach (var product in productMenu.Value)
+            {
+                if (product.productId == id)
+                    return product;
+            }
+        }
+        return null;
     }
 }

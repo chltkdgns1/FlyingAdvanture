@@ -58,38 +58,38 @@ public class PurchaseResultManager
                 }, null);
             }, null);
         }
-        GoogleIAPCallBackManager.FinishPurchase();
+        //GoogleIAPCallBackManager.FinishPurchase();
     }
 
     static async void SetDeleteAdsGoogleResult(int purchaseCnt)
     {
         await GoogleFirebaseManager.WriteDeleteAds(GlobalData.Uid);
         GlobalData.IsDeleteAds = true;
-        GoogleIAPCallBackManager.FinishPurchase();
+        //GoogleIAPCallBackManager.FinishPurchase();
         SuccessPurchase(ProductTypes.DeleteAdsGoogle);
     }
 
     static async void SetUnLockThreeResult(int purchaseCnt)
     {
-        await GoogleFirebaseManager.WriteUnLockStageData(GlobalData.Uid, (int)KeyNumber.three);
-        GlobalData.UnLockPage = (int)KeyNumber.three;
-        GoogleIAPCallBackManager.FinishPurchase();
+       // await GoogleFirebaseManager.WriteUnLockStageData(GlobalData.Uid, (int)KeyNumber.three);
+       // GlobalData.UnLockPage = (int)KeyNumber.three;
+       // GoogleIAPCallBackManager.FinishPurchase();
         SuccessPurchase(ProductTypes.UnLockStageThree);
     }
 
     static async void SetUnLockFourResult(int purchaseCnt)
     {
-        await GoogleFirebaseManager.WriteUnLockStageData(GlobalData.Uid, (int)KeyNumber.four);
-        GlobalData.UnLockPage = (int)KeyNumber.four;
-        GoogleIAPCallBackManager.FinishPurchase();
+        //await GoogleFirebaseManager.WriteUnLockStageData(GlobalData.Uid, (int)KeyNumber.four);
+        //GlobalData.UnLockPage = (int)KeyNumber.four;
+        //GoogleIAPCallBackManager.FinishPurchase();
         SuccessPurchase(ProductTypes.UnLockStageFour);
     }
 
     static async void SetUnLockFiveResult(int purchaseCnt)
     {
-        await GoogleFirebaseManager.WriteUnLockStageData(GlobalData.Uid, (int)KeyNumber.five);
-        GlobalData.UnLockPage = (int)KeyNumber.five;
-        GoogleIAPCallBackManager.FinishPurchase();
+        //await GoogleFirebaseManager.WriteUnLockStageData(GlobalData.Uid, (int)KeyNumber.five);
+        //GlobalData.UnLockPage = (int)KeyNumber.five;
+        //GoogleIAPCallBackManager.FinishPurchase();
         SuccessPurchase(ProductTypes.UnLockStageFive);
     }
 

@@ -19,7 +19,7 @@ public class StoreMenu : MonoBehaviour
 
     public void OnStorePopupIndex()
     {
-        StorePopup.CacheIndex = menuIndex;
+        PopupStore.CacheIndex = menuIndex;
     }
 }
 
